@@ -88,9 +88,7 @@ React.render(
 至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx
 
 ```
-npm install -g react-tools
-
-
+➜  reactjs git:(master) ✗ npm install -g react-tools
 ➜  reactjs git:(master) ✗ jsx --help
 
   Usage: jsx [options] <source directory> <output directory> [<module ID> [<module ID> ...]]
@@ -136,11 +134,7 @@ npm install -g react-tools
     http://127.0.0.1:8045/
 
 
-
-- https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations
-- https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
-
-## helloworld3（使用react-tools编译jsx）
+## helloworld3（使用gulp-react编译jsx）
 
 复制helloworld2为helloworld3
 
@@ -171,13 +165,23 @@ gulp.task('default', ['jsx'], function() {
 - 执行`gulp jsx`是编译src下的所有
 - 执行`gulp`是编译src下的所有，并当src变动的时候也会重新编译src下的
 
+实际上helloworld2和helloworld3可以实现的功能是一样的，不过gulp更强大更丰富一些，推荐使用gulp。
+
 如果各位不熟悉gulp，参见https://github.com/streakq/js-tools-best-practice/blob/master/doc/Gulp.md
+
+
+更多jsx集成和构建工具见
+
+- https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations
+- https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
 
 至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
 
 ## 带有状态的组件
 
 再来个复杂点的，下面给出的是带有状态的组件
+
+见`examples/simple-state/src/state.js`
 
 ```
 var Input = React.createClass({
@@ -200,6 +204,17 @@ var Input = React.createClass({
 
 React.render(<Input/>, document.body);
 ```
+
+然后
+
+    http-server .  -p 8046 -o
+
+访问
+
+    http://127.0.0.1:8046/
+
+
+是不是有点像双向数据绑定的意思？
 
 ## 视图相关的3个概念
 
