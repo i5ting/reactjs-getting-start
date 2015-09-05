@@ -281,6 +281,20 @@ React.render(<Input/>, document.getElementById('container'));
 - State（写过view组件的基本都会知道，按钮有三态，Normal，Highlight，Selected，包括extjs，jquery里的大部分ui框架都是有状态的。）
 - Event（其实还应该算一个就是dom事件，上面的例子就把onChange的handler编译后的handleChange方法，这要感谢jsx）
 
+回顾一下之前的代码
+
+属性部分
+
+    return <div>Hello {this.props.name}</div>;
+    
+状态部分
+
+    var value = this.state.value;
+    
+事件绑定
+
+    <input type="text" value={value} onChange={this.handleChange} />
+
 了解了上面这些，就可以写代码了，因为
 
 - 属性，解决了view的定义问题，即语义描述
@@ -348,6 +362,7 @@ React.render(
 
 这里我们创建了一个Search组件，然后又创建了一个Page组件，然后我们在Page组件中调用Search组件，并且调用了两次，这里我们通过属性searchType传入值
 
+这里是出于演示，写在一起了，如果是拆开呢？
 
 ## 约定
 
@@ -364,46 +379,6 @@ React.render(
 ## 实战：Tab
 
 https://github.com/supnate/react-tab-selector
-
-
-
-## FAQ
-
-### 很多人最常问的问题：比如和jQuery集成可以吗？
-
-reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用
-
-### react比angular好用吗？
-
-reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
-
-### reactjs只是客户端的么？
-
-是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。
-
-- [服务端渲染 React](https://www.npmjs.com/package/react-server-example)
-
-### 我该用 React 吗？
-
-简单回答：是。
-
-详尽的回答：很不幸，是的，在大多数场景中。
-
-下面是为什么要用 React：
-
-对团队开发来说表现的很出色
-
-- 加强了 UI 和 工作流模式 UI 代码的可读和可维护性。
-- 组件化的 UI 是 web 开发的趋势，并且你现在应该开始了。
-
-下面是为什么在你选择之前需要再考虑一下：
-
-- 一开始 React 会极大地减慢你的开发。理解props、state以及组件通信如何工作并不是很简单，并且文档信息错综复杂。理论上，这将会被克服，你的整个团队都上道之后，开发速度上就会有一个很大的提升
-- React 不支持 IE8 以下的任何浏览器，以后也绝不会
-- 如果你的应用/站点不需要频繁的动态页面更新，你可能为了很小的功能而编写大量的代码
-- 你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些
-
-以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/
 
 ## 推荐阅读
 
@@ -455,7 +430,7 @@ https://github.com/ant-design
 - 生命周期
 - 组件嵌套
 
-如果你掌握了这4点，实际上就已经可以很好的使用reactjs了，比如一般view是要和ajax放到一起用的，这时候，只要在组件的生命周期里处理即可，实际上也还是上面的东西，此处就不罗嗦了。
+如果你掌握了这5点，实际上就已经可以很好的使用reactjs了，比如一般view是要和ajax放到一起用的，这时候，只要在组件的生命周期里处理即可，实际上也还是上面的东西，此处就不罗嗦了。
 
 ## todo（reactjs高级篇）
 
@@ -480,4 +455,44 @@ Flux 的概念很简单，view 层触发了一个事件（比如说，用户在�
 这一数据流/解耦观察者模式被设计来保证你的资源总存在于内存/模式中。这是一件好事™。
 
 Flux 的坏处是每个人都会重新发明轮子。由于没有在事件库，model 层，AJAX 层等达成一致，出现了很多种“Flux”的实现方式，并且它们彼此之间相互混杂。
+
+## FAQ
+
+### 很多人最常问的问题：比如和jQuery集成可以吗？
+
+reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用
+
+看一下ant-design去，里面就用到了jQuery
+
+### react比angular好用吗？
+
+reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
+
+### reactjs只是客户端的么？
+
+是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。
+
+- [服务端渲染 React](https://www.npmjs.com/package/react-server-example)
+
+### 我该用 React 吗？
+
+简单回答：是。
+
+详尽的回答：很不幸，是的，在大多数场景中。
+
+下面是为什么要用 React：
+
+对团队开发来说表现的很出色
+
+- 加强了 UI 和 工作流模式 UI 代码的可读和可维护性。
+- 组件化的 UI 是 web 开发的趋势，并且你现在应该开始了。
+
+下面是为什么在你选择之前需要再考虑一下：
+
+- 一开始 React 会极大地减慢你的开发。理解props、state以及组件通信如何工作并不是很简单，并且文档信息错综复杂。理论上，这将会被克服，你的整个团队都上道之后，开发速度上就会有一个很大的提升
+- React 不支持 IE8 以下的任何浏览器，以后也绝不会
+- 如果你的应用/站点不需要频繁的动态页面更新，你可能为了很小的功能而编写大量的代码
+- 你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些
+
+以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/
 
