@@ -85,7 +85,7 @@ React.render(
 
     <script type="text/jsx" src="dist/helloworld.js">
 
-至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx
+至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx，安装后就会jsx命令，我们主要靠的就是jsx来编译的
 
 ```
 ➜  reactjs git:(master) ✗ npm install -g react-tools
