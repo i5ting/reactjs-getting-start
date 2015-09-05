@@ -361,7 +361,24 @@ React.render(
 https://github.com/supnate/react-tab-selector
 
 
-## 我该用 React 吗？
+
+## FAQ
+
+### 很多人最常问的问题：比如和jQuery集成可以吗？
+
+reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用
+
+### react比angular好用吗？
+
+reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
+
+### reactjs只是客户端的么？
+
+是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。
+
+- [服务端渲染 React](https://www.npmjs.com/package/react-server-example)
+
+### 我该用 React 吗？
 
 简单回答：是。
 
@@ -382,24 +399,6 @@ https://github.com/supnate/react-tab-selector
 - 你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些
 
 以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/
-
-
-
-## FAQ
-
-### 很多人最常问的问题：比如和jQuery集成可以吗？
-
-reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用
-
-### react比angular好用吗？
-
-reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
-
-### reactjs只是客户端的么？
-
-是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。
-
-- [服务端渲染 React](https://www.npmjs.com/package/react-server-example)
 
 ## 推荐阅读
 
