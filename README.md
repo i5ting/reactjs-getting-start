@@ -268,11 +268,11 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 
 ## FAQ
 
-1）很多人最常问的问题：比如和jQuery集成可以吗？
+### 很多人最常问的问题：比如和jQuery集成可以吗？
 
 reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用
 
-2）react比angular好用吗？
+### react比angular好用吗？
 
 reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
 
