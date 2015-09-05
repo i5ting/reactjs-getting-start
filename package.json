@@ -6,6 +6,7 @@
     "start": "npm demo/bin/www"
   },
   "dependencies": {
+    "gulp-react": "^3.0.1"
   },
   "devDependencies": {
     "gulp": "^3.8.10",

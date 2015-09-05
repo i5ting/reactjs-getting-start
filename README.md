@@ -51,13 +51,14 @@ React.render(
 );
 ```
 
-然后
+然后使用http-server启动一个http服务（如果没有http-server，请[sudo]npm install -g http-server）
 
     http-server .  -p 8044 -o
 
 访问
 
     http://127.0.0.1:8044/
+    
 
 首先，这是一种 HTML-like 的语法，叫jsx，可以理解成coffee，typescript之类的，需要编译
 
@@ -69,6 +70,111 @@ React.render(
 
 
 这样页面就可以拆分成n个小块，每块各自为政，即所谓的组件化（也就积木一样）
+
+注意：
+
+1. 对于内联与HTML中的代码或者是未经过转化的外部文件，在script标签中要加上type="text/jsx"，并引入JSXTransformer.js文件即可
+1. 上面使用的是helloworld.jsx，这是为了演示用的，实际reactjs建议的后缀是js
+
+开发阶段这样写没问题，但上线的产品环境是不能这样写的，见helloworld2
+
+## helloworld2（使用react-tools编译jsx）
+
+复制helloworld为helloworld2，创建dist目录存放编译后的jsx文件，把helloworld.jsx放到src/helloworld.jsx,同时修改index.html里的链接
+
+    <script type="text/jsx" src="dist/helloworld.js">
+
+至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx
+
+```
+npm install -g react-tools
+
+
+➜  reactjs git:(master) ✗ jsx --help
+
+  Usage: jsx [options] <source directory> <output directory> [<module ID> [<module ID> ...]]
+
+  Options:
+
+    -h, --help                               output usage information
+    -V, --version                            output the version number
+    -c, --config [file]                      JSON configuration file (no file or - means STDIN)
+    -w, --watch                              Continually rebuild
+    -x, --extension <js | coffee | ...>      File extension to assume when resolving module identifiers
+    --relativize                             Rewrite all module identifiers to be relative
+    --follow-requires                        Scan modules for required dependencies
+    --use-provides-module                    Respect @providesModules pragma in files
+    --cache-dir <directory>                  Alternate directory to use for disk cache
+    --no-cache-dir                           Disable the disk cache
+    --source-charset <utf8 | win1252 | ...>  Charset of source (default: utf8)
+    --output-charset <utf8 | win1252 | ...>  Charset of output (default: utf8)
+    --harmony                                Turns on JS transformations such as ES6 Classes etc.
+    --target [version]                       Specify your target version of ECMAScript. Valid values are "es3" and "es5". The default is "es5". "es3" will avoid uses of defineProperty and will quote reserved words. WARNING: "es5" is not properly supported, even with the use of es5shim, es5sham. If you need to support IE8, use "es3".
+    --strip-types                            Strips out type annotations.
+    --es6module                              Parses the file as a valid ES6 module. (Note that this means implicit strict mode)
+    --non-strict-es6module                   Parses the file as an ES6 module, except disables implicit strict-mode. (This is useful if you're porting non-ES6 modules to ES6, but haven't yet verified that they are strict-mode safe yet)
+    --source-map-inline                      Embed inline sourcemap in transformed source
+```
+
+安装完成后
+
+```
+➜  helloworld2 git:(master) ✗ jsx src/ dist/ -w
+["helloworld"]
+``` 
+
+上面的`-w`是watch的意思，就是当src目录里的任何文件变动，就会重新编译，和gulp-watch是类似的。
+
+然后执行
+
+    http-server .  -p 8045 -o
+
+
+访问
+
+    http://127.0.0.1:8045/
+
+
+
+- https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations
+- https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
+
+## helloworld3（使用react-tools编译jsx）
+
+复制helloworld2为helloworld3
+
+
+https://github.com/sindresorhus/gulp-react
+
+安装
+
+    npm install --save gulp-react
+
+创建gulpfile.js
+
+```
+var gulp = require('gulp');
+var react = require('gulp-react');
+ 
+gulp.task('jsx', function () {
+    return gulp.src('src/**')
+        .pipe(react())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['jsx'], function() {
+  gulp.watch('./src/**/*', ['jsx']);
+});
+```
+
+- 执行`gulp jsx`是编译src下的所有
+- 执行`gulp`是编译src下的所有，并当src变动的时候也会重新编译src下的
+
+如果各位不熟悉gulp，参见https://github.com/streakq/js-tools-best-practice/blob/master/doc/Gulp.md
+
+至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
+
+## 带有状态的组件
 
 再来个复杂点的，下面给出的是带有状态的组件
 
