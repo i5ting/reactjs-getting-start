@@ -4,8 +4,24 @@
 - 入门（中文） http://reactjs.cn/react/docs/getting-started.html
 
 
-React 仅仅是个 view 层
+React 仅仅是个 view 层！
 
+基于HTML的前端界面开发正变得越来越复杂，其本质问题基本都可以归结于如何将来自于服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上。而来自Facebook的React框架正是完全面向此问题的一个解决方案，按官网描述，其出发点为：用于开发数据不断变化的大型应用程序（Building large applications with data that changes over time）。相比传统型的前端开发，React开辟了一个相当另类的途径，实现了前端界面的高效率高性能开发。
+
+首先，对于React，有一些认识误区，这里先总结一下：
+
+- React不是一个完整的MVC框架，最多可以认为是MVC中的V（View），甚至React并不非常认可MVC开发模式；
+- React的服务器端Render能力只能算是一个锦上添花的功能，并不是其核心出发点，事实上React官方站点几乎没有提及其在服务器端的应用；
+- 有人拿React和Web Component相提并论，但两者并不是完全的竞争关系，你完全可以用React去开发一个真正的Web Component；
+- React不是一个新的模板语言，JSX只是一个表象，没有JSX的React也能工作。
+
+重要事情说3遍
+
+React 仅仅是个 view 层！
+
+React 仅仅是个 view 层！
+
+React 仅仅是个 view 层！
 
 ## 基本概念
 
