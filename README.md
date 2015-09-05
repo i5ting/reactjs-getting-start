@@ -273,6 +273,11 @@ reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是
 - http://segmentfault.com/a/1190000002559219
 - http://my.oschina.net/leogao0816/blog/379487
 
+- [JSX in Depth](http://facebook.github.io/react/docs/jsx-in-depth.html)
+- [JSX Spread Attributes](http://facebook.github.io/react/docs/jsx-spread.html)
+- [If-Else in JSX](http://facebook.github.io/react/tips/if-else-in-JSX.html)
+- [JSX Gotchas](http://facebook.github.io/react/docs/jsx-gotchas.html)
+
 ## 最佳实践
 
 ### ant-design
