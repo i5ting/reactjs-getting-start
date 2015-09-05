@@ -112,9 +112,10 @@ reactjs很小，并没有jq提供的功能，可以说它们是互补的，可�
 
 reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
 
-## 推荐
+## 推荐阅读
 
-
+- http://www.ruanyifeng.com/blog/2015/03/react.html
+- http://segmentfault.com/a/1190000002559219
 
 ## 总结
 
