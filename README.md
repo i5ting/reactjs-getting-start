@@ -75,6 +75,7 @@ React.render(
 
 1. 对于内联与HTML中的代码或者是未经过转化的外部文件，在script标签中要加上type="text/jsx"，并引入JSXTransformer.js文件即可
 1. 上面使用的是helloworld.jsx，这是为了演示用的，实际reactjs建议的后缀是js
+1. 使用http-server可以防止chrome的本地资源跨域问题
 
 开发阶段这样写没问题，但上线的产品环境是不能这样写的，见helloworld2
 
