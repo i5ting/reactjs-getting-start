@@ -232,7 +232,9 @@ gulp.task('default', ['jsx'], function() {
 todo
 
 
-至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
+说明：无论是react-tools，还是gulp和webpack只是构建的一种的方式而已，此处罗列这些的目的是想让大家了解大项目构建的可参考方式，至于使用上，可以按照个人习惯。
+
+至此我们完成了4个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
 
 
 ## 带有状态的组件
