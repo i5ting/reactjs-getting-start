@@ -25,6 +25,10 @@ gulp.task('generate',function () {
 	}	
 });
 
+gulp.task('show',['generate'] ,function () {
+    console.log('show');
+});
+
 gulp.task('default',['generate', 'rename', 'deploy'] ,function () {
     console.log('default');
 });
