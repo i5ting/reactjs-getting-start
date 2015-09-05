@@ -3,7 +3,15 @@
 - 代码 https://github.com/facebook/react
 - 入门（中文） http://reactjs.cn/react/docs/getting-started.html
 
-## Virtual DOM
+## 基本概念
+
+### 什么是JSX？
+
+在用React写组件的时候，通常会用到JSX语法，粗看上去，像是在Javascript代码里直接写起了XML标签，实质上这只是一个语法糖，每一个XML标签都会被JSX转换工具转换成纯Javascript代码，当然你想直接使用纯Javascript代码写也是可以的，只是利用JSX，组件的结构和组件之间的关系看上去更加清晰
+
+更多见 http://my.oschina.net/leogao0816/blog/379487
+
+### Virtual DOM
 
 Virtual DOM是reactjs的最核心概念，我拷贝一段来说明它
 
@@ -176,6 +184,7 @@ gulp.task('default', ['jsx'], function() {
 - https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
 
 至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
+
 
 ## 带有状态的组件
 
