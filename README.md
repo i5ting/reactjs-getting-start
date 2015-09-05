@@ -202,7 +202,8 @@ var Input = React.createClass({
   }
 });
 
-React.render(<Input/>, document.body);
+React.render(<Input/>, document.getElementById('container'));
+
 ```
 
 然后
