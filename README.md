@@ -1,6 +1,7 @@
 # reactjs
 
-https://github.com/facebook/react
+- 代码 https://github.com/facebook/react
+- 入门（中文） http://reactjs.cn/react/docs/getting-started.html
 
 ## Virtual DOM
 
@@ -13,6 +14,29 @@ Virtual DOM是reactjs的最核心概念，我拷贝一段来说明它
 
 ## helloworld
 
+```
+bower install --save react
+```
+
+创建并编写index.html
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- The core React library -->
+    <script src="bower_components/react/react.js"></script>
+    <!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
+    <script src="bower_components/react/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/jsx" src="helloworld.jsx">
+  </body>
+</html>
+```
+
+编写helloworld.jsx
 
 ```
 var HelloMessage = React.createClass({
@@ -26,6 +50,14 @@ React.render(
   document.getElementById('container')
 );
 ```
+
+然后
+
+    http-server .  -p 8044 -o
+
+访问
+
+    http://127.0.0.1:8044/
 
 首先，这是一种 HTML-like 的语法，叫jsx，可以理解成coffee，typescript之类的，需要编译
 
@@ -116,6 +148,7 @@ reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是
 
 - http://www.ruanyifeng.com/blog/2015/03/react.html
 - http://segmentfault.com/a/1190000002559219
+- http://my.oschina.net/leogao0816/blog/379487
 
 ## 总结
 
