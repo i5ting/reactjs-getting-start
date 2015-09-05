@@ -215,9 +215,9 @@ React.render(<Input/>, document.getElementById('container'));
     http://127.0.0.1:8046/
 
 
-是不是有点像双向数据绑定的意思？
+是不是有点像双向数据绑定的意思？感兴趣可以看看angular或vuejs或avalon，好多。。。
 
-## 视图相关的3个概念
+## 视图相关的3个概念（属性，状态，事件）
 
 - Props（属性，就是element上的attrs，换个名字property，变成复数，即props）
 - State（写过view组件的基本都会知道，按钮有三态，Normal，Highlight，Selected，包括extjs，jquery里的大部分ui框架都是有状态的。）
@@ -272,6 +272,34 @@ reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是
 - http://www.ruanyifeng.com/blog/2015/03/react.html
 - http://segmentfault.com/a/1190000002559219
 - http://my.oschina.net/leogao0816/blog/379487
+
+## 最佳实践
+
+### ant-design
+
+https://github.com/ant-design
+
+特性
+
+- 提炼自企业级后台产品的交互语言和视觉风格。
+- 丰富实用的 React UI 组件。
+- 基于 React 的组件化开发模式。
+- 背靠 npm 生态圈。
+- 基于 webpack 的调试构建方案，支持 ES6。
+
+我们来换一种说法
+
+- 基于react组件化
+- 代码在npm里，做到模块化
+- 通过webpack构建，更灵活
+
+至于说es几，那只是噱头而已
+
+通过npm，可以更好的和nodejs结合，利用node的生态来扩展，其实bower等也类似，但对package.json不友好，所以我是很看好这种方式的。
+
+以后js大一统，npm就不在只是nodejs package manager的，而是js package manager
+
+另外它的界面设计的很好，模块化的做的也很好，我非常喜欢，唯一的缺点是它对nodejs的版本要求太高了，会让一小部分人不适应的。
 
 ## 总结
 
