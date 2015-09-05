@@ -384,6 +384,17 @@ React.render(<span class="nt">&lt;Input/&gt;</span>, document.getElementById(&#3
 <li>Event（其实还应该算一个就是dom事件，上面的例子就把onChange的handler编译后的handleChange方法，这要感谢jsx）</li>
 </ul>
 
+<p>回顾一下之前的代码</p>
+
+<p>属性部分</p>
+<div class="highlight"><pre>return <span class="nt">&lt;div&gt;</span>Hello {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+</pre></div>
+<p>状态部分</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">this</span><span class="o">.</span><span class="vg">state</span><span class="o">.</span><span class="vg">value</span><span class="p">;</span>
+</pre></div>
+<p>事件绑定</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="vg">input</span><span class="w"> </span><span class="vg">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="vg">value</span><span class="o">=</span><span class="p">{</span><span class="vg">value</span><span class="p">}</span><span class="w"> </span><span class="vg">onChange</span><span class="o">=</span><span class="p">{</span><span class="vg">this</span><span class="o">.</span><span class="vg">handleChange</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+</pre></div>
 <p>了解了上面这些，就可以写代码了，因为</p>
 
 <ul>
@@ -456,6 +467,8 @@ React.render(
 </pre></div>
 <p>这里我们创建了一个Search组件，然后又创建了一个Page组件，然后我们在Page组件中调用Search组件，并且调用了两次，这里我们通过属性searchType传入值</p>
 
+<p>这里是出于演示，写在一起了，如果是拆开呢？</p>
+
 <h2>约定</h2>
 
 <p>1、ReactJs是基于组件化的开发，所以最终你的页面应该是由若干个小组件组成的大组件。</p>
@@ -471,50 +484,6 @@ React.render(
 <h2>实战：Tab</h2>
 
 <p>https://github.com/supnate/react-tab-selector</p>
-
-<h2>FAQ</h2>
-
-<h3>很多人最常问的问题：比如和jQuery集成可以吗？</h3>
-
-<p>reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用</p>
-
-<h3>react比angular好用吗？</h3>
-
-<p>reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧</p>
-
-<h3>reactjs只是客户端的么？</h3>
-
-<p>是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。</p>
-
-<ul>
-<li><a href="https://www.npmjs.com/package/react-server-example">服务端渲染 React</a></li>
-</ul>
-
-<h3>我该用 React 吗？</h3>
-
-<p>简单回答：是。</p>
-
-<p>详尽的回答：很不幸，是的，在大多数场景中。</p>
-
-<p>下面是为什么要用 React：</p>
-
-<p>对团队开发来说表现的很出色</p>
-
-<ul>
-<li>加强了 UI 和 工作流模式 UI 代码的可读和可维护性。</li>
-<li>组件化的 UI 是 web 开发的趋势，并且你现在应该开始了。</li>
-</ul>
-
-<p>下面是为什么在你选择之前需要再考虑一下：</p>
-
-<ul>
-<li>一开始 React 会极大地减慢你的开发。理解props、state以及组件通信如何工作并不是很简单，并且文档信息错综复杂。理论上，这将会被克服，你的整个团队都上道之后，开发速度上就会有一个很大的提升</li>
-<li>React 不支持 IE8 以下的任何浏览器，以后也绝不会</li>
-<li>如果你的应用/站点不需要频繁的动态页面更新，你可能为了很小的功能而编写大量的代码</li>
-<li>你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些</li>
-</ul>
-
-<p>以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/</p>
 
 <h2>推荐阅读</h2>
 
@@ -573,7 +542,7 @@ React.render(
 <li>组件嵌套</li>
 </ul>
 
-<p>如果你掌握了这4点，实际上就已经可以很好的使用reactjs了，比如一般view是要和ajax放到一起用的，这时候，只要在组件的生命周期里处理即可，实际上也还是上面的东西，此处就不罗嗦了。</p>
+<p>如果你掌握了这5点，实际上就已经可以很好的使用reactjs了，比如一般view是要和ajax放到一起用的，这时候，只要在组件的生命周期里处理即可，实际上也还是上面的东西，此处就不罗嗦了。</p>
 
 <h2>todo（reactjs高级篇）</h2>
 
@@ -600,6 +569,52 @@ React.render(
 <p>这一数据流/解耦观察者模式被设计来保证你的资源总存在于内存/模式中。这是一件好事™。</p>
 
 <p>Flux 的坏处是每个人都会重新发明轮子。由于没有在事件库，model 层，AJAX 层等达成一致，出现了很多种“Flux”的实现方式，并且它们彼此之间相互混杂。</p>
+
+<h2>FAQ</h2>
+
+<h3>很多人最常问的问题：比如和jQuery集成可以吗？</h3>
+
+<p>reactjs很小，并没有jq提供的功能，可以说它们是互补的，可以结合着使用</p>
+
+<p>看一下ant-design去，里面就用到了jQuery</p>
+
+<h3>react比angular好用吗？</h3>
+
+<p>reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧</p>
+
+<h3>reactjs只是客户端的么？</h3>
+
+<p>是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。</p>
+
+<ul>
+<li><a href="https://www.npmjs.com/package/react-server-example">服务端渲染 React</a></li>
+</ul>
+
+<h3>我该用 React 吗？</h3>
+
+<p>简单回答：是。</p>
+
+<p>详尽的回答：很不幸，是的，在大多数场景中。</p>
+
+<p>下面是为什么要用 React：</p>
+
+<p>对团队开发来说表现的很出色</p>
+
+<ul>
+<li>加强了 UI 和 工作流模式 UI 代码的可读和可维护性。</li>
+<li>组件化的 UI 是 web 开发的趋势，并且你现在应该开始了。</li>
+</ul>
+
+<p>下面是为什么在你选择之前需要再考虑一下：</p>
+
+<ul>
+<li>一开始 React 会极大地减慢你的开发。理解props、state以及组件通信如何工作并不是很简单，并且文档信息错综复杂。理论上，这将会被克服，你的整个团队都上道之后，开发速度上就会有一个很大的提升</li>
+<li>React 不支持 IE8 以下的任何浏览器，以后也绝不会</li>
+<li>如果你的应用/站点不需要频繁的动态页面更新，你可能为了很小的功能而编写大量的代码</li>
+<li>你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些</li>
+</ul>
+
+<p>以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/</p>
 
 			          	</article>
 			        </div>
