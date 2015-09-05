@@ -133,7 +133,10 @@
 .highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
 <h1>reactjs</h1>
 
-<p>https://github.com/facebook/react</p>
+<ul>
+<li>代码 https://github.com/facebook/react</li>
+<li>入门（中文） http://reactjs.cn/react/docs/getting-started.html</li>
+</ul>
 
 <h2>Virtual DOM</h2>
 
@@ -144,6 +147,24 @@
 <p>说那么多你可能都没明白，上例子</p>
 
 <h2>helloworld</h2>
+<div class="highlight"><pre><span class="vg">bower</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="w"> </span><span class="vg">react</span>
+</pre></div>
+<p>创建并编写index.html</p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="c">&lt;!-- The core React library --&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;bower_components/react/react.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- In-browser JSX transformer, remove when pre-compiling JSX. --&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;bower_components/react/JSXTransformer.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/jsx&quot;</span> <span class="na">src=</span><span class="s">&quot;helloworld.jsx&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>编写helloworld.jsx</p>
 <div class="highlight"><pre>var HelloMessage = React.createClass({
   render: function() {
     return <span class="nt">&lt;div&gt;</span>Hello {this.props.name}<span class="nt">&lt;/div&gt;</span>;
@@ -155,6 +176,12 @@ React.render(
   document.getElementById(&#39;container&#39;)
 );
 </pre></div>
+<p>然后使用http-server启动一个http服务（如果没有http-server，请[sudo]npm install -g http-server）</p>
+<div class="highlight"><pre><span class="vg">http</span><span class="o">-</span><span class="vg">server</span><span class="w"> </span><span class="o">.</span><span class="w">  </span><span class="o">-</span><span class="vg">p</span><span class="w"> </span><span class="il">8044</span><span class="w"> </span><span class="o">-</span><span class="vg">o</span>
+</pre></div>
+<p>访问</p>
+<div class="highlight"><pre><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">8044</span><span class="o">/</span>
+</pre></div>
 <p>首先，这是一种 HTML-like 的语法，叫jsx，可以理解成coffee，typescript之类的，需要编译</p>
 
 <p>核心就是React.render，说明这个组件放在什么地方，比如上面的例子就是</p>
@@ -163,6 +190,100 @@ React.render(
 <span class="nt">&lt;/div&gt;</span>
 </pre></div>
 <p>这样页面就可以拆分成n个小块，每块各自为政，即所谓的组件化（也就积木一样）</p>
+
+<p>注意：</p>
+
+<ol>
+<li>对于内联与HTML中的代码或者是未经过转化的外部文件，在script标签中要加上type=&quot;text/jsx&quot;，并引入JSXTransformer.js文件即可</li>
+<li>上面使用的是helloworld.jsx，这是为了演示用的，实际reactjs建议的后缀是js</li>
+</ol>
+
+<p>开发阶段这样写没问题，但上线的产品环境是不能这样写的，见helloworld2</p>
+
+<h2>helloworld2（使用react-tools编译jsx）</h2>
+
+<p>复制helloworld为helloworld2，创建dist目录存放编译后的jsx文件，把helloworld.jsx放到src/helloworld.jsx,同时修改index.html里的链接</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="vg">script</span><span class="w"> </span><span class="vg">type</span><span class="o">=</span><span class="s2">&quot;text/jsx&quot;</span><span class="w"> </span><span class="vg">src</span><span class="o">=</span><span class="s2">&quot;dist/helloworld.js&quot;</span><span class="o">&gt;</span>
+</pre></div>
+<p>至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">react</span><span class="o">-</span><span class="vg">tools</span>
+
+
+<span class="err">➜</span><span class="w">  </span><span class="vg">reactjs</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">jsx</span><span class="w"> </span><span class="o">--</span><span class="vg">help</span>
+
+<span class="w">  </span><span class="nl">Usage:</span><span class="w"> </span><span class="vg">jsx</span><span class="w"> </span><span class="p">[</span><span class="vg">options</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">source</span><span class="w"> </span><span class="vg">directory</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">output</span><span class="w"> </span><span class="vg">directory</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="vg">module</span><span class="w"> </span><span class="vg">ID</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="vg">module</span><span class="w"> </span><span class="vg">ID</span><span class="o">&gt;</span><span class="w"> </span><span class="o">...</span><span class="p">]]</span>
+
+<span class="w">  </span><span class="nl">Options:</span>
+
+<span class="w">    </span><span class="o">-</span><span class="vg">h</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="vg">help</span><span class="w">                               </span><span class="vg">output</span><span class="w"> </span><span class="vg">usage</span><span class="w"> </span><span class="vg">information</span>
+<span class="w">    </span><span class="o">-</span><span class="vg">V</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="vg">version</span><span class="w">                            </span><span class="vg">output</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">version</span><span class="w"> </span><span class="vg">number</span>
+<span class="w">    </span><span class="o">-</span><span class="vg">c</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="vg">config</span><span class="w"> </span><span class="p">[</span><span class="vg">file</span><span class="p">]</span><span class="w">                      </span><span class="vg">JSON</span><span class="w"> </span><span class="vg">configuration</span><span class="w"> </span><span class="vg">file</span><span class="w"> </span><span class="p">(</span><span class="vg">no</span><span class="w"> </span><span class="vg">file</span><span class="w"> </span><span class="vg">or</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="vg">means</span><span class="w"> </span><span class="vg">STDIN</span><span class="p">)</span>
+<span class="w">    </span><span class="o">-</span><span class="vg">w</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="vg">watch</span><span class="w">                              </span><span class="vg">Continually</span><span class="w"> </span><span class="vg">rebuild</span>
+<span class="w">    </span><span class="o">-</span><span class="vg">x</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="vg">extension</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">js</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">coffee</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">...&gt;</span><span class="w">      </span><span class="vg">File</span><span class="w"> </span><span class="vg">extension</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">assume</span><span class="w"> </span><span class="vg">when</span><span class="w"> </span><span class="vg">resolving</span><span class="w"> </span><span class="vg">module</span><span class="w"> </span><span class="vg">identifiers</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">relativize</span><span class="w">                             </span><span class="vg">Rewrite</span><span class="w"> </span><span class="vg">all</span><span class="w"> </span><span class="vg">module</span><span class="w"> </span><span class="vg">identifiers</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">be</span><span class="w"> </span><span class="vg">relative</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">follow</span><span class="o">-</span><span class="vg">requires</span><span class="w">                        </span><span class="vg">Scan</span><span class="w"> </span><span class="vg">modules</span><span class="w"> </span><span class="vg">for</span><span class="w"> </span><span class="vg">required</span><span class="w"> </span><span class="vg">dependencies</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">use</span><span class="o">-</span><span class="vg">provides</span><span class="o">-</span><span class="vg">module</span><span class="w">                    </span><span class="vg">Respect</span><span class="w"> </span><span class="err">@</span><span class="vg">providesModules</span><span class="w"> </span><span class="vg">pragma</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">files</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">cache</span><span class="o">-</span><span class="vg">dir</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">directory</span><span class="o">&gt;</span><span class="w">                  </span><span class="vg">Alternate</span><span class="w"> </span><span class="vg">directory</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">use</span><span class="w"> </span><span class="vg">for</span><span class="w"> </span><span class="vg">disk</span><span class="w"> </span><span class="vg">cache</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">no</span><span class="o">-</span><span class="vg">cache</span><span class="o">-</span><span class="vg">dir</span><span class="w">                           </span><span class="vg">Disable</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">disk</span><span class="w"> </span><span class="vg">cache</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">source</span><span class="o">-</span><span class="vg">charset</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">utf8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">win1252</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">...&gt;</span><span class="w">  </span><span class="vg">Charset</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">source</span><span class="w"> </span><span class="p">(</span><span class="nl">default:</span><span class="w"> </span><span class="vg">utf8</span><span class="p">)</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">output</span><span class="o">-</span><span class="vg">charset</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">utf8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">win1252</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">...&gt;</span><span class="w">  </span><span class="vg">Charset</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">output</span><span class="w"> </span><span class="p">(</span><span class="nl">default:</span><span class="w"> </span><span class="vg">utf8</span><span class="p">)</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">harmony</span><span class="w">                                </span><span class="vg">Turns</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">JS</span><span class="w"> </span><span class="vg">transformations</span><span class="w"> </span><span class="vg">such</span><span class="w"> </span><span class="vg">as</span><span class="w"> </span><span class="vg">ES6</span><span class="w"> </span><span class="vg">Classes</span><span class="w"> </span><span class="vg">etc</span><span class="o">.</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">target</span><span class="w"> </span><span class="p">[</span><span class="vg">version</span><span class="p">]</span><span class="w">                       </span><span class="vg">Specify</span><span class="w"> </span><span class="vg">your</span><span class="w"> </span><span class="vg">target</span><span class="w"> </span><span class="vg">version</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">ECMAScript</span><span class="o">.</span><span class="w"> </span><span class="vg">Valid</span><span class="w"> </span><span class="vg">values</span><span class="w"> </span><span class="vg">are</span><span class="w"> </span><span class="s2">&quot;es3&quot;</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="s2">&quot;es5&quot;</span><span class="o">.</span><span class="w"> </span><span class="vg">The</span><span class="w"> </span><span class="vg">default</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="s2">&quot;es5&quot;</span><span class="o">.</span><span class="w"> </span><span class="s2">&quot;es3&quot;</span><span class="w"> </span><span class="vg">will</span><span class="w"> </span><span class="vg">avoid</span><span class="w"> </span><span class="vg">uses</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">defineProperty</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="vg">will</span><span class="w"> </span><span class="vg">quote</span><span class="w"> </span><span class="vg">reserved</span><span class="w"> </span><span class="vg">words</span><span class="o">.</span><span class="w"> </span><span class="nl">WARNING:</span><span class="w"> </span><span class="s2">&quot;es5&quot;</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">not</span><span class="w"> </span><span class="vg">properly</span><span class="w"> </span><span class="vg">supported</span><span class="p">,</span><span class="w"> </span><span class="vg">even</span><span class="w"> </span><span class="vg">with</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">use</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">es5shim</span><span class="p">,</span><span class="w"> </span><span class="vg">es5sham</span><span class="o">.</span><span class="w"> </span><span class="vg">If</span><span class="w"> </span><span class="vg">you</span><span class="w"> </span><span class="vg">need</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">support</span><span class="w"> </span><span class="vg">IE8</span><span class="p">,</span><span class="w"> </span><span class="vg">use</span><span class="w"> </span><span class="s2">&quot;es3&quot;</span><span class="o">.</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">strip</span><span class="o">-</span><span class="vg">types</span><span class="w">                            </span><span class="vg">Strips</span><span class="w"> </span><span class="vg">out</span><span class="w"> </span><span class="vg">type</span><span class="w"> </span><span class="vg">annotations</span><span class="o">.</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">es6module</span><span class="w">                              </span><span class="vg">Parses</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">file</span><span class="w"> </span><span class="vg">as</span><span class="w"> </span><span class="vg">a</span><span class="w"> </span><span class="vg">valid</span><span class="w"> </span><span class="vg">ES6</span><span class="w"> </span><span class="vg">module</span><span class="o">.</span><span class="w"> </span><span class="p">(</span><span class="vg">Note</span><span class="w"> </span><span class="vg">that</span><span class="w"> </span><span class="vg">this</span><span class="w"> </span><span class="vg">means</span><span class="w"> </span><span class="vg">implicit</span><span class="w"> </span><span class="vg">strict</span><span class="w"> </span><span class="vg">mode</span><span class="p">)</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">non</span><span class="o">-</span><span class="vg">strict</span><span class="o">-</span><span class="vg">es6module</span><span class="w">                   </span><span class="vg">Parses</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">file</span><span class="w"> </span><span class="vg">as</span><span class="w"> </span><span class="vg">an</span><span class="w"> </span><span class="vg">ES6</span><span class="w"> </span><span class="vg">module</span><span class="p">,</span><span class="w"> </span><span class="vg">except</span><span class="w"> </span><span class="vg">disables</span><span class="w"> </span><span class="vg">implicit</span><span class="w"> </span><span class="vg">strict</span><span class="o">-</span><span class="vg">mode</span><span class="o">.</span><span class="w"> </span><span class="p">(</span><span class="vg">This</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">useful</span><span class="w"> </span><span class="vg">if</span><span class="w"> </span><span class="vg">you</span><span class="c1">&#39;re porting non-ES6 modules to ES6, but haven&#39;t yet verified that they are strict-mode safe yet)</span>
+<span class="w">    </span><span class="o">--</span><span class="vg">source</span><span class="o">-</span><span class="vg">map</span><span class="o">-</span><span class="vg">inline</span><span class="w">                      </span><span class="vg">Embed</span><span class="w"> </span><span class="vg">inline</span><span class="w"> </span><span class="vg">sourcemap</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">transformed</span><span class="w"> </span><span class="vg">source</span>
+</pre></div>
+<p>安装完成后</p>
+<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">helloworld2</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">jsx</span><span class="w"> </span><span class="vg">src</span><span class="o">/</span><span class="w"> </span><span class="vg">dist</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="vg">w</span>
+<span class="p">[</span><span class="s2">&quot;helloworld&quot;</span><span class="p">]</span>
+</pre></div>
+<p>上面的<code>-w</code>是watch的意思，就是当src目录里的任何文件变动，就会重新编译，和gulp-watch是类似的。</p>
+
+<p>然后执行</p>
+<div class="highlight"><pre><span class="vg">http</span><span class="o">-</span><span class="vg">server</span><span class="w"> </span><span class="o">.</span><span class="w">  </span><span class="o">-</span><span class="vg">p</span><span class="w"> </span><span class="il">8045</span><span class="w"> </span><span class="o">-</span><span class="vg">o</span>
+</pre></div>
+<p>访问</p>
+<div class="highlight"><pre><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">8045</span><span class="o">/</span>
+</pre></div>
+<ul>
+<li>https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations</li>
+<li>https://github.com/facebook/react/wiki/Complementary-Tools#build-tools</li>
+</ul>
+
+<h2>helloworld3（使用react-tools编译jsx）</h2>
+
+<p>复制helloworld2为helloworld3</p>
+
+<p>https://github.com/sindresorhus/gulp-react</p>
+
+<p>安装</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="w"> </span><span class="vg">gulp</span><span class="o">-</span><span class="vg">react</span>
+</pre></div>
+<p>创建gulpfile.js</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">gulp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">react</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp-react&#39;);</span>
+
+<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;jsx&#39;, function () {</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">src</span><span class="p">(</span><span class="c1">&#39;src/**&#39;)</span>
+<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">react</span><span class="p">())</span>
+<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">gulp</span><span class="o">.</span><span class="vg">dest</span><span class="p">(</span><span class="c1">&#39;dist&#39;));</span>
+<span class="p">});</span>
+
+<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;default&#39;, [&#39;jsx&#39;], function() {</span>
+<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">watch</span><span class="p">(</span><span class="c1">&#39;./src/**/*&#39;, [&#39;jsx&#39;]);</span>
+<span class="p">});</span>
+</pre></div>
+<ul>
+<li>执行<code>gulp jsx</code>是编译src下的所有</li>
+<li>执行<code>gulp</code>是编译src下的所有，并当src变动的时候也会重新编译src下的</li>
+</ul>
+
+<p>如果各位不熟悉gulp，参见https://github.com/streakq/js-tools-best-practice/blob/master/doc/Gulp.md</p>
+
+<p>至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。</p>
+
+<h2>带有状态的组件</h2>
 
 <p>再来个复杂点的，下面给出的是带有状态的组件</p>
 <div class="highlight"><pre>var Input = React.createClass({
@@ -249,6 +370,7 @@ React.render(<span class="nt">&lt;Input/&gt;</span>, document.body);
 <ul>
 <li>http://www.ruanyifeng.com/blog/2015/03/react.html</li>
 <li>http://segmentfault.com/a/1190000002559219</li>
+<li>http://my.oschina.net/leogao0816/blog/379487</li>
 </ul>
 
 <h2>总结</h2>
