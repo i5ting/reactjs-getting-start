@@ -3,7 +3,35 @@
 - 代码 https://github.com/facebook/react
 - 入门（中文） http://reactjs.cn/react/docs/getting-started.html
 
+
+React 仅仅是个 view 层
+
+
 ## 基本概念
+
+### 组件化
+
+虚拟DOM(virtual-dom)不仅带来了简单的UI开发逻辑，同时也带来了组件化开发的思想，所谓组件，即封装起来的具有独立功能的UI部件。React推荐以组件的方式去重新思考UI构成，将UI上每一个功能相对独立的模块定义成组件，然后将小的组件通过组合或者嵌套的方式构成大的组件，最终完成整体UI的构建。例如，Facebook的instagram.com整站都采用了React来开发，整个页面就是一个大的组件，其中包含了嵌套的大量其它组件，大家有兴趣可以看下它背后的代码。
+
+如果说MVC的思想让你做到视图-数据-控制器的分离，那么组件化的思考方式则是带来了UI功能模块之间的分离。我们通过一个典型的Blog评论界面来看MVC和组件化开发思路的区别。
+
+对于MVC开发模式来说，开发者将三者定义成不同的类，实现了表现，数据，控制的分离。开发者更多的是从技术的角度来对UI进行拆分，实现松耦合。
+
+对于React而言，则完全是一个新的思路，开发者从功能的角度出发，将UI分成不同的组件，每个组件都独立封装。
+
+在React中，你按照界面模块自然划分的方式来组织和编写你的代码，对于评论界面而言，整个UI是一个通过小组件构成的大组件，每个组件只关心自己部分的逻辑，彼此独立。
+
+![](img/1.png)
+
+React认为一个组件应该具有如下特征：
+
+（1）可组合（Composeable）：一个组件易于和其它组件一起使用，或者嵌套在另一个组件内部。如果一个组件内部创建了另一个组件，那么说父组件拥有（own）它创建的子组件，通过这个特性，一个复杂的UI可以拆分成多个简单的UI组件；
+
+（2）可重用（Reusable）：每个组件都是具有独立功能的，它可以被使用在多个UI场景；
+
+（3）可维护（Maintainable）：每个小的组件仅仅包含自身的逻辑，更容易被理解和维护；
+
+（4）可测试（Testable）：因为每个组件都是独立的，那么对于各个组件分别测试显然要比对于整个UI进行测试容易的多。
 
 ### 什么是JSX？
 
@@ -266,6 +294,79 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
 
 
+## 我该用 React 吗？
+
+简单回答：是。
+
+详尽的回答：很不幸，是的，在大多数场景中。
+
+下面是为什么要用 React：
+
+对团队开发来说表现的很出色
+
+- 加强了 UI 和 工作流模式 UI 代码的可读和可维护性。
+- 组件化的 UI 是 web 开发的趋势，并且你现在应该开始了。
+
+下面是为什么在你选择之前需要再考虑一下：
+
+- 一开始 React 会极大地减慢你的开发。理解props、state以及组件通信如何工作并不是很简单，并且文档信息错综复杂。理论上，这将会被克服，你的整个团队都上道之后，开发速度上就会有一个很大的提升
+- React 不支持 IE8 以下的任何浏览器，以后也绝不会
+- 如果你的应用/站点不需要频繁的动态页面更新，你可能为了很小的功能而编写大量的代码
+- 你会改造很多轮子。React 很年轻，并且因为没有权威的方式来处理事件、组件通信，你必须从零开始创建大量的组件库。你的应用是否有下拉菜单，可调整大小的窗口，或者 lightbox？你同样必须从零开始写这些
+
+以上摘自http://blog.andrewray.me/reactjs-for-stupid-people/
+
+## 组件的嵌套
+
+React是基于组件化的开发，那么组件化开发最大的优点是什么？毫无疑问，当然是复用，下面我们来看看React中到底是如何实现组件的复用的，这里我们还写一个例子来说吧，代码如下：
+
+```
+var Search = React.createClass({
+  render: function() {
+    return (
+      <div>
+         {this.props.searchType}:<input type="text" />
+         <button>Search</button>
+      </div>
+    );
+  }
+});
+var Page = React.createClass({
+  render: function() {
+    return (
+      <div>
+         <h1>Welcome!</h1>
+         <Search searchType="Title" />
+         <Search  searchType="Content" />
+      </div>
+    );
+  }
+});
+React.render(
+  <Page />,
+  document.getElementById('container')
+);
+```
+
+这里我们创建了一个Search组件，然后又创建了一个Page组件，然后我们在Page组件中调用Search组件，并且调用了两次，这里我们通过属性searchType传入值
+
+
+## 约定
+
+1、ReactJs是基于组件化的开发，所以最终你的页面应该是由若干个小组件组成的大组件。
+
+2、可以通过属性，将值传递到组件内部，同理也可以通过属性将内部的结果传递到父级组件(留给大家研究)；要对某些值的变化做DOM操作的，要把这些值放到state中。
+
+3、为组件添加外部css样式时，类名应该写成className而不是class;添加内部样式时，应该是style={{opacity: this.state.opacity}}而不是style="opacity:{this.state.opacity};"。
+
+4、组件名称首字母必须大写。
+
+5、变量名用{}包裹，且不能加双引号。
+
+## 实战：Tab
+
+https://github.com/supnate/react-tab-selector
+
 ## FAQ
 
 ### 很多人最常问的问题：比如和jQuery集成可以吗？
@@ -276,11 +377,18 @@ reactjs很小，并没有jq提供的功能，可以说它们是互补的，可�
 
 reactjs是组件化的最佳实践，但angularjs的mvvm等好用功能，它是没有的，所以更好用说不上，姑且可以认为各有千秋吧
 
+### reactjs只是客户端的么？
+
+是有服务器端的react实践的，不过我推荐用客户端的，前后端分离是比较好的，但不排除某种场景使用服务器端react。
+
+- [服务端渲染 React](https://www.npmjs.com/package/react-server-example)
+
 ## 推荐阅读
 
-- http://www.ruanyifeng.com/blog/2015/03/react.html
+- [React 入门实例教程](http://www.ruanyifeng.com/blog/2015/03/react.html)
 - http://segmentfault.com/a/1190000002559219
 - http://my.oschina.net/leogao0816/blog/379487
+- [颠覆式前端UI开发框架](http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react)
 
 - [JSX in Depth](http://facebook.github.io/react/docs/jsx-in-depth.html)
 - [JSX Spread Attributes](http://facebook.github.io/react/docs/jsx-spread.html)
@@ -317,18 +425,37 @@ https://github.com/ant-design
 
 ## 总结
 
-总结一下，关于reactjs，我没有讲virtual dom，而是主要讲了4个概念
+总结一下，关于reactjs，我没有讲virtual dom，而是主要讲了5个概念
 
 - 属性
 - 状态
 - 事件
 - 生命周期
+- 组件嵌套
 
 如果你掌握了这4点，实际上就已经可以很好的使用reactjs了，比如一般view是要和ajax放到一起用的，这时候，只要在组件的生命周期里处理即可，实际上也还是上面的东西，此处就不罗嗦了。
-
 
 ## todo（reactjs高级篇）
 
 - 加点 路由和 数据单向流的 东西吧
 - 或者 是服务器端渲染的 数据请求逻辑 什么的
 - 如果能用redux 和express做个例子 那就更好了
+
+### Flux
+
+https://github.com/facebook/flux
+
+也许 React 开发中，最让人反感的还是“Flux”。 远比 React 自身混乱。“Flux”这个名字就很让人费解。
+
+Flux 并不是真实存在的。它只是一个概念，而不是个类库。幸运的是，存在一个类库，在某种程度上：
+
+“相比于一个框架，Flux 更像是一种模式。”
+
+呃。一个最不恰当的名字：React 并没有重塑最近 40 年的 UI 体系的知识，也没有为数据管理带来新的概念。
+
+Flux 的概念很简单，view 层触发了一个事件（比如说，用户在文本域中输入了一个姓名），这个事件更新了 model，然后 model 触发了一个事件，view 响应了 model 的事件，使用最新的数据进行渲染。就这样。
+
+这一数据流/解耦观察者模式被设计来保证你的资源总存在于内存/模式中。这是一件好事™。
+
+Flux 的坏处是每个人都会重新发明轮子。由于没有在事件库，model 层，AJAX 层等达成一致，出现了很多种“Flux”的实现方式，并且它们彼此之间相互混杂。
+
