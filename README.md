@@ -227,6 +227,11 @@ gulp.task('default', ['jsx'], function() {
 - https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations
 - https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
 
+### helloworld4（使用webpack构建）
+
+todo
+
+
 至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。
 
 
