@@ -227,7 +227,7 @@ gulp.task('default', ['jsx'], function() {
 - https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations
 - https://github.com/facebook/react/wiki/Complementary-Tools#build-tools
 
-### helloworld4（使用webpack构建）
+## helloworld4（使用webpack构建）
 
 todo
 
