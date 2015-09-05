@@ -138,7 +138,15 @@
 <li>入门（中文） http://reactjs.cn/react/docs/getting-started.html</li>
 </ul>
 
-<h2>Virtual DOM</h2>
+<h2>基本概念</h2>
+
+<h3>什么是JSX？</h3>
+
+<p>在用React写组件的时候，通常会用到JSX语法，粗看上去，像是在Javascript代码里直接写起了XML标签，实质上这只是一个语法糖，每一个XML标签都会被JSX转换工具转换成纯Javascript代码，当然你想直接使用纯Javascript代码写也是可以的，只是利用JSX，组件的结构和组件之间的关系看上去更加清晰</p>
+
+<p>更多见 http://my.oschina.net/leogao0816/blog/379487</p>
+
+<h3>Virtual DOM</h3>
 
 <p>Virtual DOM是reactjs的最核心概念，我拷贝一段来说明它</p>
 
@@ -206,10 +214,8 @@ React.render(
 <p>复制helloworld为helloworld2，创建dist目录存放编译后的jsx文件，把helloworld.jsx放到src/helloworld.jsx,同时修改index.html里的链接</p>
 <div class="highlight"><pre><span class="o">&lt;</span><span class="vg">script</span><span class="w"> </span><span class="vg">type</span><span class="o">=</span><span class="s2">&quot;text/jsx&quot;</span><span class="w"> </span><span class="vg">src</span><span class="o">=</span><span class="s2">&quot;dist/helloworld.js&quot;</span><span class="o">&gt;</span>
 </pre></div>
-<p>至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx</p>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">react</span><span class="o">-</span><span class="vg">tools</span>
-
-
+<p>至此准备工作就做完了，下面开始介绍使用react-tools来编译jsx，安装后就会jsx命令，我们主要靠的就是jsx来编译的</p>
+<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">reactjs</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">react</span><span class="o">-</span><span class="vg">tools</span>
 <span class="err">➜</span><span class="w">  </span><span class="vg">reactjs</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">jsx</span><span class="w"> </span><span class="o">--</span><span class="vg">help</span>
 
 <span class="w">  </span><span class="nl">Usage:</span><span class="w"> </span><span class="vg">jsx</span><span class="w"> </span><span class="p">[</span><span class="vg">options</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">source</span><span class="w"> </span><span class="vg">directory</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">output</span><span class="w"> </span><span class="vg">directory</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="vg">module</span><span class="w"> </span><span class="vg">ID</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="vg">module</span><span class="w"> </span><span class="vg">ID</span><span class="o">&gt;</span><span class="w"> </span><span class="o">...</span><span class="p">]]</span>
@@ -247,12 +253,7 @@ React.render(
 <p>访问</p>
 <div class="highlight"><pre><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">8045</span><span class="o">/</span>
 </pre></div>
-<ul>
-<li>https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations</li>
-<li>https://github.com/facebook/react/wiki/Complementary-Tools#build-tools</li>
-</ul>
-
-<h2>helloworld3（使用react-tools编译jsx）</h2>
+<h2>helloworld3（使用gulp-react编译jsx）</h2>
 
 <p>复制helloworld2为helloworld3</p>
 
@@ -280,13 +281,24 @@ React.render(
 <li>执行<code>gulp</code>是编译src下的所有，并当src变动的时候也会重新编译src下的</li>
 </ul>
 
+<p>实际上helloworld2和helloworld3可以实现的功能是一样的，不过gulp更强大更丰富一些，推荐使用gulp。</p>
+
 <p>如果各位不熟悉gulp，参见https://github.com/streakq/js-tools-best-practice/blob/master/doc/Gulp.md</p>
+
+<p>更多jsx集成和构建工具见</p>
+
+<ul>
+<li>https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations</li>
+<li>https://github.com/facebook/react/wiki/Complementary-Tools#build-tools</li>
+</ul>
 
 <p>至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。</p>
 
 <h2>带有状态的组件</h2>
 
 <p>再来个复杂点的，下面给出的是带有状态的组件</p>
+
+<p>见<code>examples/simple-state/src/state.js</code></p>
 <div class="highlight"><pre>var Input = React.createClass({
   getInitialState: function() {
     return {value: &#39;Hello!&#39;};
@@ -305,9 +317,17 @@ React.render(
   }
 });
 
-React.render(<span class="nt">&lt;Input/&gt;</span>, document.body);
+React.render(<span class="nt">&lt;Input/&gt;</span>, document.getElementById(&#39;container&#39;));
 </pre></div>
-<h2>视图相关的3个概念</h2>
+<p>然后</p>
+<div class="highlight"><pre><span class="vg">http</span><span class="o">-</span><span class="vg">server</span><span class="w"> </span><span class="o">.</span><span class="w">  </span><span class="o">-</span><span class="vg">p</span><span class="w"> </span><span class="il">8046</span><span class="w"> </span><span class="o">-</span><span class="vg">o</span>
+</pre></div>
+<p>访问</p>
+<div class="highlight"><pre><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">8046</span><span class="o">/</span>
+</pre></div>
+<p>是不是有点像双向数据绑定的意思？感兴趣可以看看angular或vuejs或avalon，好多。。。</p>
+
+<h2>视图相关的3个概念（属性，状态，事件）</h2>
 
 <ul>
 <li>Props（属性，就是element上的attrs，换个名字property，变成复数，即props）</li>
@@ -371,8 +391,44 @@ React.render(<span class="nt">&lt;Input/&gt;</span>, document.body);
 <ul>
 <li>http://www.ruanyifeng.com/blog/2015/03/react.html</li>
 <li>http://segmentfault.com/a/1190000002559219</li>
-<li>http://my.oschina.net/leogao0816/blog/379487</li>
+<li><p>http://my.oschina.net/leogao0816/blog/379487</p></li>
+<li><p><a href="http://facebook.github.io/react/docs/jsx-in-depth.html">JSX in Depth</a></p></li>
+<li><p><a href="http://facebook.github.io/react/docs/jsx-spread.html">JSX Spread Attributes</a></p></li>
+<li><p><a href="http://facebook.github.io/react/tips/if-else-in-JSX.html">If-Else in JSX</a></p></li>
+<li><p><a href="http://facebook.github.io/react/docs/jsx-gotchas.html">JSX Gotchas</a></p></li>
 </ul>
+
+<h2>最佳实践</h2>
+
+<h3>ant-design</h3>
+
+<p>https://github.com/ant-design</p>
+
+<p>特性</p>
+
+<ul>
+<li>提炼自企业级后台产品的交互语言和视觉风格。</li>
+<li>丰富实用的 React UI 组件。</li>
+<li>基于 React 的组件化开发模式。</li>
+<li>背靠 npm 生态圈。</li>
+<li>基于 webpack 的调试构建方案，支持 ES6。</li>
+</ul>
+
+<p>我们来换一种说法</p>
+
+<ul>
+<li>基于react组件化</li>
+<li>代码在npm里，做到模块化</li>
+<li>通过webpack构建，更灵活</li>
+</ul>
+
+<p>至于说es几，那只是噱头而已</p>
+
+<p>通过npm，可以更好的和nodejs结合，利用node的生态来扩展，其实bower等也类似，但对package.json不友好，所以我是很看好这种方式的。</p>
+
+<p>以后js大一统，npm就不在只是nodejs package manager的，而是js package manager</p>
+
+<p>另外它的界面设计的很好，模块化的做的也很好，我非常喜欢，唯一的缺点是它对nodejs的版本要求太高了，会让一小部分人不适应的。</p>
 
 <h2>总结</h2>
 
