@@ -229,6 +229,81 @@ gulp.task('default', ['jsx'], function() {
 
 ## helloworld4（使用webpack构建）
 
+webpack是什么？
+
+A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows to load parts for the application on demand. Through "loaders" modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff. 
+
+在 webpack 当中, 所有的资源都被当作是模块, js, css, 图片等，因此webpack当中 js 可以引用 css, css 中可以嵌入图片 dataUrl。对于不同的资源可以使用不同的loader(还有插件机制)，比如coffeescript 用的是 coffee-loader，各种插件参见http://webpack.github.io/docs/list-of-loaders.html
+
+
+野史
+
+Webpack 是德国开发者 Tobias Koppers 开发的模块加载器
+Instagram 工程师认为这个方案很棒, 似乎还把作者招过去了
+
+
+官方文档
+
+[https://webpack.github.io](https://webpack.github.io)
+
+github上的源码
+
+[https://github.com/webpack/webpack](https://github.com/webpack/webpack)
+
+如果完全不懂，可以看一下webpack入门文档 
+
+[https://webpack.github.io/docs/tutorials/getting-started/](https://webpack.github.io/docs/tutorials/getting-started/)
+
+安装
+
+    [sudo] npm install -g webpack
+    [sudo] npm install -g webpack-dev-server
+    
+初始化webpack/helloworld目录
+    
+    mkdir webpack/helloworld
+    cd webpack/helloworld
+    npm init
+    touch main.js index.js
+    touch webpack.config.js
+
+可以把 ./main.js 作为入口打包 bundle.js:
+
+```
+// webpack.config.js
+module.exports = {
+  entry: './main.js',
+  output: {
+    filename: 'index.js'       
+  }
+};
+```
+
+main.js
+
+```
+var o = require('./test')
+console.log(o)
+// var o = require('./main')
+o.say('hello')
+```
+
+test.js
+
+```
+module.exports = {
+  say: function(str){
+    console.log('say words: ' + str);
+  }
+};
+```
+
+测试
+
+    webpack  --target node && node index.js 
+
+webpack-dev-server
+
 todo
 
 
@@ -399,6 +474,12 @@ https://github.com/supnate/react-tab-selector
 - [JSX Gotchas](http://facebook.github.io/react/docs/jsx-gotchas.html)
 
 ## 最佳实践
+
+### react-hot-loader
+
+React Hot Loader is a plugin for Webpack that allows instantaneous live refresh without losing state while editing React components.
+
+http://gaearon.github.io/react-hot-loader/getstarted/
 
 ### ant-design
 
