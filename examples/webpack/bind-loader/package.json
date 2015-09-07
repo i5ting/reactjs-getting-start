@@ -1,0 +1,15 @@
+{
+  "name": "loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "webpack --module-bind 'css=style!css' && open index.html "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.17.0",
+    "style-loader": "^0.12.3"
+  }
+}

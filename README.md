@@ -254,53 +254,26 @@ github上的源码
 
 [https://webpack.github.io/docs/tutorials/getting-started/](https://webpack.github.io/docs/tutorials/getting-started/)
 
-安装
+写了一个helloworld的nodejs程序，具体见examples/webpack/helloworld.md
 
-    [sudo] npm install -g webpack
-    [sudo] npm install -g webpack-dev-server
-    
-初始化webpack/helloworld目录
-    
-    mkdir webpack/helloworld
-    cd webpack/helloworld
-    npm init
-    touch main.js index.js
-    touch webpack.config.js
+- examples/webpack/helloworld
 
-可以把 ./main.js 作为入口打包 bundle.js:
+下面的demo，根据https://webpack.github.io/docs/tutorials/getting-started/写的代码
 
-```
-// webpack.config.js
-module.exports = {
-  entry: './main.js',
-  output: {
-    filename: 'index.js'       
-  }
-};
-```
+- examples/webpack/web1
+- examples/webpack/web2
+- examples/webpack/loader
+- examples/webpack/bindloader
 
-main.js
+下面开始看看
 
-```
-var o = require('./test')
-console.log(o)
-// var o = require('./main')
-o.say('hello')
-```
 
-test.js
+npm install --save react
+npm install --save-dev webpack webpack-dev-server
+npm install --save-dev jsx-loader
+npm install --save-dev http-server
 
-```
-module.exports = {
-  say: function(str){
-    console.log('say words: ' + str);
-  }
-};
-```
 
-测试
-
-    webpack  --target node && node index.js 
 
 webpack-dev-server
 

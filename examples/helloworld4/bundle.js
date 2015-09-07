@@ -44,25 +44,33 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var o = __webpack_require__(1)
-	console.log(o)
-	o.say('hello')
+	/** @jsx React.DOM *//** @jsx React.DOM */
+	'use strict'
 
+	var React = __webpack_require__(1);
+	var Hello = __webpack_require__(2)
+	React.render(React.createElement(Hello, null), document.getElementById('content'))
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	// 
-	module.exports = {
-	  say: function(str){
-	    console.log('say words: ' + str);
-	  }
-	};
+	module.exports = React;
 
-	exports.say = function(str){
-	  console.log('say words: ' + str);
-	}
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	/** @jsx React.DOM */var HelloMessage = React.createClass({displayName: "HelloMessage",
+	  render: function() {
+	    return React.createElement("div", null, "Hello ", this.props.name);
+	  }
+	});
+
+	React.render(
+	  React.createElement(HelloMessage, {name: "John"}),
+	  document.getElementById('content')
+	);
 
 /***/ }
 /******/ ]);

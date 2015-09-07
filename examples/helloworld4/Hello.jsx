@@ -6,6 +6,5 @@ var HelloMessage = React.createClass({
 
 React.render(
   <HelloMessage name="John" />,
-  document.getElementById('container')
+  document.getElementById('content')
 );
-

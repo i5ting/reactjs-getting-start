@@ -1,0 +1,22 @@
+{
+  "name": "helloworld4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "npm run serve | npm run dev",
+    "serve": "./node_modules/.bin/http-server -p 8081",
+    "dev": "webpack-dev-server --progress --colors --port 8099"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.0",
+    "jsx-loader": "^0.13.2",
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.10.1"
+  }
+}

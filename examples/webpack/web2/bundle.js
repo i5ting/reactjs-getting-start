@@ -44,25 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var o = __webpack_require__(1)
-	console.log(o)
-	o.say('hello')
-
+	document.write(__webpack_require__(1));
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	// 
-	module.exports = {
-	  say: function(str){
-	    console.log('say words: ' + str);
-	  }
-	};
-
-	exports.say = function(str){
-	  console.log('say words: ' + str);
-	}
+	module.exports = "It works from content.js.";
 
 /***/ }
 /******/ ]);
