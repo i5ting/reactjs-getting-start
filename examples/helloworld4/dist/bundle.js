@@ -42,23 +42,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/** @jsx React.DOM *//** @jsx React.DOM */
-	'use strict'
-
-	var React = __webpack_require__(1);
-	var Hello = __webpack_require__(2)
-	React.render(React.createElement(Hello, null), document.getElementById('content'))
-
-/***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	module.exports = React;
-
-/***/ },
-/* 2 */
 /***/ function(module, exports) {
 
 	/** @jsx React.DOM */var HelloMessage = React.createClass({displayName: "HelloMessage",
@@ -71,6 +54,7 @@
 	  React.createElement(HelloMessage, {name: "John"}),
 	  document.getElementById('content')
 	);
+
 
 /***/ }
 /******/ ]);

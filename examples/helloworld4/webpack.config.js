@@ -1,7 +1,7 @@
 module.exports = {
-    entry: './index.jsx',
+    entry: './src/helloworld.jsx',
     output: {
-        filename: 'bundle.js', //this is the default name, so you can skip it
+        filename: 'dist/bundle.js', //this is the default name, so you can skip it
         //at this directory our bundle file will be available
         //make sure port 8090 is used when launching webpack-dev-server
         // publicPath: 'http://127.0.0.0:8099/assets'
