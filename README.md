@@ -277,6 +277,12 @@ npm install --save-dev http-server
 
 webpack-dev-server
 
+webpack实践
+
+- watch文件变动，编译
+- 使用webpack-dev-server来做分离
+- 使用react-hot-loader来livereload
+
 todo
 
 
@@ -446,7 +452,18 @@ https://github.com/supnate/react-tab-selector
 - [If-Else in JSX](http://facebook.github.io/react/tips/if-else-in-JSX.html)
 - [JSX Gotchas](http://facebook.github.io/react/docs/jsx-gotchas.html)
 
+webpack
+
+- [https://github.com/petehunt/webpack-howto](https://github.com/petehunt/webpack-howto)
+
 ## 最佳实践
+
+
+### react-hot-boilerplate
+
+Minimal live-editing boilerplate for your next ReactJS project
+
+https://github.com/gaearon/react-hot-boilerplate
 
 ### react-hot-loader
 
