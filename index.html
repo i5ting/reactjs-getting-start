@@ -339,9 +339,66 @@ React.render(
 
 <h2>helloworld4（使用webpack构建）</h2>
 
+<p>webpack是什么？</p>
+
+<p>A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows to load parts for the application on demand. Through &quot;loaders&quot; modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff. </p>
+
+<p>在 webpack 当中, 所有的资源都被当作是模块, js, css, 图片等，因此webpack当中 js 可以引用 css, css 中可以嵌入图片 dataUrl。对于不同的资源可以使用不同的loader(还有插件机制)，比如coffeescript 用的是 coffee-loader，各种插件参见http://webpack.github.io/docs/list-of-loaders.html</p>
+
+<p>野史</p>
+
+<p>Webpack 是德国开发者 Tobias Koppers 开发的模块加载器
+Instagram 工程师认为这个方案很棒, 似乎还把作者招过去了</p>
+
+<p>官方文档</p>
+
+<p><a href="https://webpack.github.io">https://webpack.github.io</a></p>
+
+<p>github上的源码</p>
+
+<p><a href="https://github.com/webpack/webpack">https://github.com/webpack/webpack</a></p>
+
+<p>如果完全不懂，可以看一下webpack入门文档 </p>
+
+<p><a href="https://webpack.github.io/docs/tutorials/getting-started/">https://webpack.github.io/docs/tutorials/getting-started/</a></p>
+
+<p>写了一个helloworld的nodejs程序，具体见examples/webpack/helloworld.md</p>
+
+<ul>
+<li>examples/webpack/helloworld</li>
+</ul>
+
+<p>下面的demo，根据https://webpack.github.io/docs/tutorials/getting-started/写的代码</p>
+
+<ul>
+<li>examples/webpack/web1</li>
+<li>examples/webpack/web2</li>
+<li>examples/webpack/loader</li>
+<li>examples/webpack/bindloader</li>
+</ul>
+
+<p>下面开始看看</p>
+
+<p>npm install --save react
+npm install --save-dev webpack webpack-dev-server
+npm install --save-dev jsx-loader
+npm install --save-dev http-server</p>
+
+<p>webpack-dev-server</p>
+
+<p>webpack实践</p>
+
+<ul>
+<li>watch文件变动，编译</li>
+<li>使用webpack-dev-server来做分离</li>
+<li>使用react-hot-loader来livereload</li>
+</ul>
+
 <p>todo</p>
 
-<p>至此我们完成了3个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。</p>
+<p>说明：无论是react-tools，还是gulp和webpack只是构建的一种的方式而已，此处罗列这些的目的是想让大家了解大项目构建的可参考方式，至于使用上，可以按照个人习惯。</p>
+
+<p>至此我们完成了4个helloworld，相信大家都已经熟悉了react的几种开发方式和入门例子，下面继续深入reactjs。</p>
 
 <h2>带有状态的组件</h2>
 
@@ -502,7 +559,25 @@ React.render(
 <li><p><a href="http://facebook.github.io/react/docs/jsx-gotchas.html">JSX Gotchas</a></p></li>
 </ul>
 
+<p>webpack</p>
+
+<ul>
+<li><a href="https://github.com/petehunt/webpack-howto">https://github.com/petehunt/webpack-howto</a></li>
+</ul>
+
 <h2>最佳实践</h2>
+
+<h3>react-hot-boilerplate</h3>
+
+<p>Minimal live-editing boilerplate for your next ReactJS project</p>
+
+<p>https://github.com/gaearon/react-hot-boilerplate</p>
+
+<h3>react-hot-loader</h3>
+
+<p>React Hot Loader is a plugin for Webpack that allows instantaneous live refresh without losing state while editing React components.</p>
+
+<p>http://gaearon.github.io/react-hot-loader/getstarted/</p>
 
 <h3>ant-design</h3>
 
