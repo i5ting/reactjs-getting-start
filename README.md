@@ -440,6 +440,82 @@ React.render(
 
 https://github.com/supnate/react-tab-selector
 
+以我写的tab为例子
+
+```
+<div class="wrap1">
+ <div class='i5ting_tab_header'> 
+   <ul>
+     <li class="current">
+       <a href="#">tab说明</a>	
+     </li>
+     <li>
+       <a href="#">特性</a>
+     </li>
+     <li>
+       <a href="#">开源协议</a>
+     </li>
+     <li>
+       <a href="#">源码</a>
+     </li>
+     <li>
+       <a href="#">张婷作品</a>
+     </li>
+   </ul>
+  </div>
+  <div class="i5ting_tab_content">
+    <div class="i5ting_tab_content_item current_content">
+		  <br/>
+		  i5ting-jquery-tab
+		  <br/><br/>
+		  <p>说明</p>
+  		<ol>
+  			<li>1. a copy of iciba.com tab implement </li>
+  			<li>2. 基于jQuery插件机制</li>
+  			<li>3. 可配置</li>
+  		</ol>
+    </div>
+    <div class="i5ting_tab_content_item">
+		  <br/>
+		  i5ting-jquery-tab
+  		<br/><br/>
+  		<p>特性</p>
+  		<ol>
+  			<li>1. jquery插件，支持配置</li>
+  			<li>2. 显示隐藏按钮，可配置</li>
+  		</ol>
+    </div>
+    <div class="i5ting_tab_content_item">
+		  <br/>
+		  apache 2.0
+	  </div>
+    <div class="i5ting_tab_content_item">
+		  <br/>
+		  源码位于
+		  <br/>
+		  https://github.com/i5ting/i5ting-jquery-tab.git
+    </div>
+    <div class="i5ting_tab_content_item">
+		  <br/>
+		  作者：张婷
+		  <br/>
+		  我女朋友，css和js有很多是她写，重构部分是我写的
+    </div>
+  </div>
+</div>
+```
+
+调用方式
+
+```
+	$('.wrap1').i5ting_jquery_tab({
+		fix_height :'200px',
+		tab_changed:function(current_index){
+			console.log(current_index);
+		}
+	});
+```
+
 ## 推荐阅读
 
 - [React 入门实例教程](http://www.ruanyifeng.com/blog/2015/03/react.html)
@@ -458,6 +534,7 @@ webpack
 
 redux
 
+- [http://rackt.github.io/redux/docs/introduction/PriorArt.html](http://rackt.github.io/redux/docs/introduction/PriorArt.html)
 - [https://github.com/paulwittmann/redux-offline-docs](https://github.com/paulwittmann/redux-offline-docs)
 
 ## 最佳实践
