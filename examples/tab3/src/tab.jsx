@@ -17,17 +17,17 @@
  //     </li>
  //   </ul>
  //  </div>
-var TabHeader = React.createClass({
+var Tab = React.createClass({
   render: function() {
       
-  var cls = "i5ting_tab_header";
+  var cls = "wrap1";
     return (
       //not class but className
-      <div className="i5ting_tab_header">
+      <div className={cls}>
         <ul> {this.props.children}</ul> 
       </div>
     );
   }
 });
 
-exports = module.exports = TabHeader;
+exports = module.exports = Tab;

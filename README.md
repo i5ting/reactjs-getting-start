@@ -583,9 +583,75 @@ React.render(
 
 所以见src/tab_header_item.jsx
 
+```
+var TabHeaderItem = React.createClass({
+  render: function() {
+    var cls = this.props.current ? "current" : "";
+    return (
+      <li className={cls}>
+        <a href="#">{this.props.title} </a>
+      </li>
+    );
+  }
+});
 
+exports = module.exports = TabHeaderItem;
+```
+
+此处的要点是
+
+- className要根据配置的current来判定，如果有，即class就是current
+- 再有就是类似模板的{this.props.title}插写方式
+
+
+下面看TabHeader
+
+```
+var TabHeader = React.createClass({
+  render: function() {
+      
+  var cls = "i5ting_tab_header";
+    return (
+      <div className="i5ting_tab_header">
+        <ul> {this.props.children}</ul> 
+      </div>
+    );
+  }
+});
+```
   
-  
+- 注意是className而不是class
+- this.props.children用于嵌套TabHeaderItem
+
+处理tab的点击时间
+
+```
+  componentDidMount: function() {
+    $(this.getDOMNode()).click(function(){
+      var container_li = $(this);
+      $(container_li).addClass('current').siblings().removeClass('current');
+    })
+  },
+```
+
+说明
+
+- this.getDOMNode() 是当前对象的dom节点，绑定事件应该以此为起点
+
+
+### tabcontent
+
+```
+    <div class="i5ting_tab_content">
+      <div class="i5ting_tab_content_item current_content">
+	
+      </div>
+      <div class="i5ting_tab_content_item">
+
+      </div>
+    </div>
+```
+
 
 ## 推荐阅读
 
