@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>simple tab_zt</title>
+<style type="text/css">
+	*{margin:0; padding:0;}
+	ul,li{list-style-type:none;}
+	
+	.wrap{width:600px; margin:0 auto;}
+	h1{background:#CCF;}
+	ul{overflow:hidden; margin:10px 10px 0 10px; width:530px; height:30px;line-height:30px; position:relative; top:1px;}
+	li{float:left; width:100px; font:-weight:bold; border:1px solid #996; border-bottom:none; text-align:center; font-weight:bold; cursor:pointer; background:#f4f4f4; margin-top:1px;}
+	li.last{margin-right:0;}
+	li:link,li:visited{}
+	li:hover{background:#fff;}
+	.container{width:528px; border:1px solid #996; margin-left:10px; border-top:none; border-top:1px solid #f4f4f4; }
+	.news{background:#090;}
+	.skills{background:#69F; display:none;}
+	.works{background:#F9C; display:none;}
+	.teams{background:#CCC; display:none;}
+	.contact{background:#93F; display:none;}
+	
+	.active{background:#fff; border-top:2px solid #2f82df;padding-top:1px; height:32px; margin-top:0;}
+ 
+	.container_div{
+		display:none;
+	}
+	
+	.container_div.panel_active{
+		display:block;
+	}
+	
+	
+</style>
+<script src="js/addloadEvent.js" type="text/javascript"></script>
+<script src="js/tabex1.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+
+<script>
+$(function(){
+	//alert('init');
+	
+	$('li').click(function(e){
+		$(this).addClass('active').siblings().removeClass('active');
+		$('#container div.container_div').eq( $(this).prevAll().length ).show().siblings().hide();		
+	});
+	
+	function a(){
+		
+		
+	}
+	
+	function b(){
+		
+		
+	}
+	
+	
+	$('a').hover(a,b);
+});
+</script>
+</head>
+
+<body>
+	<div class="wrap">
+        <h1>The Tab Part</h1>
+        <ul>
+            <li class="active" id="news">News</li>
+            <li id="skills">Skills</li>
+            <li id="works">Works</li>
+            <li id="teams">Teams</li>
+            <li class="last" id="contact">Contact</li>
+        </ul>
+        <div class="container" id="container">
+            <div class="container_div panel_active">
+				This is the news part. We will give you the latest news around the world on pretty hearts and the beautiful scenry. 
+			</div>
+            <div class="container_div">
+				<p>The skill part.</p>
+				<p>The skill part.</p>
+			</div>
+            <div class="container_div">
+				We have a large number of art works. We are so famous and popular that many people come here to watch our show from far distance.
+			</div>
+            <div class="container_div">
+				A great team is very important to create a brilliant career. We are not alone ,we are a team, we can share all the dificulies.
+			</div>
+            <div class="container_div">
+				If you have any question about us or our works please leave a message, we will repond at once.
+			</div>
+        </div>
+    </div>
+    
+</body>
+</html>

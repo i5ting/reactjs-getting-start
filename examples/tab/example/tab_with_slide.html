@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>i5ting Tab with slide</title>
+<style type="text/css">
+	*{margin:0; padding:0;}
+	
+	.wrap1{width:600px; margin:0 auto;}
+	.wrap2{width:600px; margin:0 auto;}
+	.wrap3{width:600px; margin:0 auto;}
+ 	
+	.wrap3 .i5ting_tab_header_bg{
+		background-color :#f4f4f4;
+	}
+</style>
+<link href="../src/css/i5ting-jquery-tab.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>i5ting Tab with slide</h1>
+	<div class="wrap1">
+ 	   <br/><br/><br/><br/>
+	   
+	   <div class='i5ting_tab_header'> 
+	        <ul>
+	            <li class="current">
+	            	<a href="#">tab说明</a>	
+	            </li>
+	            <li>
+	            	<a href="#">特性</a>
+	            </li>
+	            <li>
+	            	<a href="#">开源协议</a>
+	            </li>
+	            <li>
+	            	<a href="#">源码</a>
+	            </li>
+	            <li class="last">
+	            	<a href="#">张婷作品</a>
+	            </li>
+	        </ul>
+		</div>
+        <div class="i5ting_tab_content">
+            <div class="i5ting_tab_content_item current_content">
+				<br/>
+				i5ting-jquery-tab
+				<br/><br/>
+				<p>说明</p>
+				<ol>
+					<li>1. a copy of iciba.com tab implement </li>
+					<li>2. 基于jQuery插件机制</li>
+					<li>3. 可配置</li>
+				</ol>
+				
+				
+			</div>
+            <div class="i5ting_tab_content_item">
+				<br/>
+				i5ting-jquery-tab
+				<br/><br/>
+				<p>特性</p>
+				<ol>
+					<li>1. jquery插件，支持配置</li>
+					<li>2. 显示隐藏按钮，可配置</li>
+				</ol>
+				
+			</div>
+            <div class="i5ting_tab_content_item">
+				<br/>
+				apache 2.0
+			</div>
+            <div class="i5ting_tab_content_item">
+				<br/>
+				源码位于
+				<br/>
+				https://github.com/i5ting/i5ting-jquery-tab.git
+			</div>
+            <div class="i5ting_tab_content_item">
+				<br/>
+				作者：张婷
+				<br/>
+				我女朋友，css和js有很多是她写，重构部分是我写的
+			</div>
+			
+        </div>
+	 
+    </div>
+	current_index =
+	<font size='44' color='red' style='float:right;'>
+		<span id='current_index'></span>
+	</font>
+	
+</body>
+</html>
+
+<script src="../libs/jquery/jquery.js" type="text/javascript"></script>
+<script src="../src/i5ting-jquery-tab.js" type="text/javascript"></script>
+
+<script>
+$(function(){
+	//alert('init');
+ 
+	$('.wrap1').i5ting_jquery_tab({
+		fix_height :'200px',
+		is_slide: true,
+		print_with_index: function(current_index){
+			$('#current_index').html(current_index + 1);
+		}
+	});
+	
+});
+</script>
