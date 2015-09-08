@@ -1,10 +1,6 @@
-var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
+var Hello2Message = require('./helloworld2.jsx');
 
 React.render(
-  <HelloMessage name="John" />,
+  <Hello2Message name="Sang" />,
   document.getElementById('content')
 );

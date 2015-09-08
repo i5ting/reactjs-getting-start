@@ -42,19 +42,89 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var TabHeaderItem   = __webpack_require__(1);
+	var TabHeader       = __webpack_require__(2);
+
+	React.render(
+	    React.createElement(TabHeader, null, 
+	      React.createElement(TabHeaderItem, {
+	        current: true, 
+	        title: "tab说明"}
+	      ), 
+	      React.createElement(TabHeaderItem, {
+	        title: "特性"}
+	      ), 
+	      React.createElement(TabHeaderItem, {
+	        title: "开源协议"}
+	      ), 
+	      React.createElement(TabHeaderItem, {
+	        title: "源码"}
+	      ), 
+	      React.createElement(TabHeaderItem, {
+	        title: "张婷作品"}
+	      )
+	    )
+	  ,
+	  document.getElementById('wrap1')
+	);
+
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
-	/** @jsx React.DOM */var HelloMessage = React.createClass({displayName: "HelloMessage",
+	/** @jsx React.DOM *///
+	// <li class="current">
+	//   <a href="#">tab说明</a>
+	// </li>
+	var TabHeaderItem = React.createClass({displayName: "TabHeaderItem",
 	  render: function() {
-	    return React.createElement("div", null, "Hello ", this.props.name);
+	      return React.createElement("li", {class: this.props.current}, React.createElement("a", {href: "#"}, this.props.title, " "));
 	  }
 	});
 
-	React.render(
-	  React.createElement(HelloMessage, {name: "John"}),
-	  document.getElementById('content')
-	);
+	exports = module.exports = TabHeaderItem;
 
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	/** @jsx React.DOM */ // <div class='i5ting_tab_header'>
+	 //   <ul>
+	 //     <li class="current">
+	 //       <a href="#">tab说明</a>
+	 //     </li>
+	 //     <li>
+	 //       <a href="#">特性</a>
+	 //     </li>
+	 //     <li>
+	 //       <a href="#">开源协议</a>
+	 //     </li>
+	 //     <li>
+	 //       <a href="#">源码</a>
+	 //     </li>
+	 //     <li>
+	 //       <a href="#">张婷作品</a>
+	 //     </li>
+	 //   </ul>
+	 //  </div>
+	var TabHeader = React.createClass({displayName: "TabHeader",
+	  render: function() {
+	      
+	  var cls = "i5ting_tab_header";
+	    return (
+	      //not class but className
+	      React.createElement("div", {className: "i5ting_tab_header"}, 
+	        "// for nest", 
+	        React.createElement("ul", null, " ", this.props.children)
+	      )
+	    );
+	  }
+	});
+
+	exports = module.exports = TabHeader;
 
 /***/ }
 /******/ ]);

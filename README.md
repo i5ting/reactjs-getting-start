@@ -442,6 +442,7 @@ https://github.com/supnate/react-tab-selector
 
 以我写的tab为例子
 
+
 ```
 <div class="wrap1">
  <div class='i5ting_tab_header'> 
@@ -515,6 +516,76 @@ https://github.com/supnate/react-tab-selector
 		}
 	});
 ```
+
+修改为
+
+```
+// $('.wrap1').i5ting_jquery_tab({
+//     fix_height :'200px',
+//     tab_changed:function(current_index){
+//         console.log(current_index);
+//     }
+// });
+
+var tab_changed = function(current_index) {
+  console.log(current_index);
+};
+
+React.render(
+  <ReactTab fix_height="200px" 
+    tab_changed={tab_changed}/>,
+  document.getElementById('wrap1')
+);
+
+```
+
+###  第一步实现TabHeader
+
+```
+<TabHeader>
+  <TabHeaderItem 
+    current
+    title="tab说明"
+  />
+  <TabHeaderItem 
+    title="特性"
+  />
+  <TabHeaderItem 
+    title="开源协议"
+  />
+  <TabHeaderItem 
+    title="源码"
+  />
+  <TabHeaderItem 
+    title="张婷作品"
+  />
+<TabHeader/>
+```
+
+首先实现TabHeaderItem
+
+根据上面的结构
+
+```
+ <li class="current">
+   <a href="#">tab说明</a>	
+ </li>
+```
+
+转成
+
+```
+<TabHeaderItem 
+  current
+  title="tab说明"
+/>
+```
+
+所以见src/tab_header_item.jsx
+
+
+  
+  
 
 ## 推荐阅读
 

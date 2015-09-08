@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/helloworld.jsx',
+    entry: './src/tab_header_test.jsx',
     output: {
         filename: 'dist/bundle.js', //this is the default name, so you can skip it
         //at this directory our bundle file will be available
