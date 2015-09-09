@@ -1,33 +1,14 @@
-var TabHeaderItem   = require('./tab_header_item.jsx');
-var TabHeader       = require('./tab_header.jsx');
-
 var TabContentItem   = require('./tab_content_item.jsx');
 var TabContent       = require('./tab_content.jsx');
 
 var Tab              = require('./tab.jsx');
 
+var data = ['tab说明','特性','开源协议','源码','张婷作品'];
+
 React.render(
-  <Tab>
-    <TabHeader>
-      <TabHeaderItem
-        current
-        title="tab说明"
-      />
-      <TabHeaderItem
-        title="特性"
-      />
-      <TabHeaderItem
-        title="开源协议"
-      />
-      <TabHeaderItem
-        title="源码"
-      />
-      <TabHeaderItem
-        title="张婷作品"
-      />
-    </TabHeader>
+  <Tab headers={data} current_tab_index={2}>
     <TabContent>
-      <TabContentItem current>
+      <TabContentItem>
         <p>tab说明</p>
       </TabContentItem>
       <TabContentItem>
@@ -36,7 +17,6 @@ React.render(
       <TabContentItem>
         开源协议
       </TabContentItem>
-  
       <TabContentItem>
         源码
       </TabContentItem>

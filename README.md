@@ -229,6 +229,17 @@ gulp.task('default', ['jsx'], function() {
 
 ## helloworld4（使用webpack构建）
 
+在React里，由于需要用到JSX，使用Webpack或Browserify这类工具编译代码已经渐渐成为前端工程师工作流程的一部分。Webpack是一款强大的前端模块管理和打包工具（）。这里列出它的一些特性：
+
+同时支持CommonJS和AMD模块；
+灵活和可扩展的Loader（加载器）机制，例如提供对JSX、ES6、Less的支持；
+支持对CSS，图片等其他资源进行打包；
+可以基于配置和智能分析打包成多个文件；
+内置强大的Code Splitting功能可以拆分并动态加载包；
+开发模式支持Hot Module Replacement模式，提高开发效率。
+
+![](http://ipad-cms.csdn.net/cms/attachment/201508A/55bb16cd8701f.jpg)
+
 webpack是什么？
 
 A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows to load parts for the application on demand. Through "loaders" modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff. 
@@ -746,6 +757,28 @@ React.render(
   document.getElementById('wrap1')
 );
 
+```
+
+
+参考
+
+```
+var Tabs = require('rc-tabs');
+var TabPane = Tabs.TabPane;
+
+var callback = function(key){
+
+}
+
+React.render(
+  (
+    <Tabs defaultActiveKey="2" onChange={callback}>
+      <TabPane tab='tab 1' key="1">first</TabPane>
+      <TabPane tab='tab 2' key="2">second</TabPane>
+      <TabPane tab='tab 3' key="3">third</TabPane>
+    </Tabs>
+  ),
+  document.getElementById('t2'));
 ```
 
 

@@ -21,15 +21,6 @@ var TabHeaderItem   = require('./tab_header_item.jsx');
 
 var TabHeader = React.createClass({
   render: function() {
-    var tabs = this.props.data.map(function (item) {
-      var selected = item.value == this.state.selected ? 'selected' : '';
-      return <li data-value={item.value}
-          className={selected}
-          onClick={this.handleOnClick}
-        >{item.name}</li>
-      ;
-    }, this);
-    
     var cls = "i5ting_tab_header";
     return (
       //not class but className

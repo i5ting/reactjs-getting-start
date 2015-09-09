@@ -17,14 +17,50 @@
  //     </li>
  //   </ul>
  //  </div>
+
+var TabHeaderItem   = require('./tab_header_item.jsx');
+var TabHeader       = require('./tab_header.jsx');
+
 var Tab = React.createClass({
+  getInitialState: function() {
+    return {tabContentDefault: 0};
+  },
+  
   render: function() {
-      
-  var cls = "wrap1";
+    var default_index = this.props.current_tab_index;
+    
+    // this.setState({tabContentDefault: default_index});
+    var h = []
+    for (var i = 0; i < this.props.headers.length; i++) {
+      var title = this.props.headers[i];
+
+      if (default_index === i) {
+        h.push(<TabHeaderItem current title={title}/>)
+      }else{
+        h.push(<TabHeaderItem title={title}/>)
+      }
+    }
+    
+    var eles = this.props.children.props.children;
+    
+    for (var i = 0; i < eles.length; i++) {
+      var aa =eles[i];
+      if (default_index === i) {
+        aa.props.current = true;
+      }
+    }
+            
+    var cls = "wrap1";
+    
     return (
       //not class but className
       <div className={cls}>
-        <ul> {this.props.children}</ul> 
+        <ul> 
+          <TabHeader>
+            {h}
+          </TabHeader>
+          {this.props.children}
+        </ul> 
       </div>
     );
   }
