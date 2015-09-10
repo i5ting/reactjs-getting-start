@@ -756,12 +756,67 @@ React.render(
   ,
   document.getElementById('wrap1')
 );
+```
+
+此例的难点在于，把header用数组来表示，根据header生成对应的TabHeader和TabHeaderItem而已。
 
 ```
+var TabHeaderItem   = require('./tab_header_item.jsx');
+var TabHeader       = require('./tab_header.jsx');
+
+var Tab = React.createClass({
+  getInitialState: function() {
+    return {tabContentDefault: 0};
+  },
+  
+  render: function() {
+    var default_index = this.props.current_tab_index;
+    
+    // this.setState({tabContentDefault: default_index});
+    var h = []
+    for (var i = 0; i < this.props.headers.length; i++) {
+      var title = this.props.headers[i];
+
+      if (default_index === i) {
+        h.push(<TabHeaderItem current title={title}/>)
+      }else{
+        h.push(<TabHeaderItem title={title}/>)
+      }
+    }
+    
+    var eles = this.props.children.props.children;
+    
+    for (var i = 0; i < eles.length; i++) {
+      var aa =eles[i];
+      if (default_index === i) {
+        aa.props.current = true;
+      }
+    }
+            
+    var cls = "wrap1";
+    
+    return (
+      //not class but className
+      <div className={cls}>
+        <ul> 
+          <TabHeader>
+            {h}
+          </TabHeader>
+          {this.props.children}
+        </ul> 
+      </div>
+    );
+  }
+});
+
+exports = module.exports = Tab;
+```
+
+其实还是遍历this.props.children，然后通过reactElement数组来构建。
 
 ### tab5
 
-参考
+具体用法如下
 
 ```
 var TabItem  = require('./tab_item.jsx');
@@ -793,6 +848,65 @@ React.render(
   document.getElementById('wrap1')
 );
 ```
+
+组件拆分
+
+- tab
+  - tab-item
+    - tab-header
+      - tab-header-item
+      - tab-header-item
+    - tab-content
+      - tab-content-item
+      - tab-content-item
+
+拆啊拆，拆成这样是不是也是醉了？
+
+难点在于，根据tab-item信息，生成header和content，而且是内置多个，烦死了
+
+以header举例
+
+```
+var TabHeaderItem   = require('./tab_header_item.jsx');
+
+var TabHeader = React.createClass({
+  render: function() {
+    var arr = [];
+    for(var i = 0; i< this.props.children.length; i++){
+      var a = this.props.children[i].props;
+      if(a.current){
+        arr.push(
+          <TabHeaderItem
+          current
+          title={a.title}/>
+        );
+      }else{
+        arr.push(
+          <TabHeaderItem
+          title={a.title}/>
+        );
+      }
+    }
+    return (
+      //not class but className
+      <div className="i5ting_tab_header">
+        <ul> {arr}</ul> 
+      </div>
+    );
+  }
+});
+
+exports = module.exports = TabHeader;
+```
+
+content和header的实现是一样，所以自己看吧。
+
+留一个作业：如何实现tab_changed回调？
+
+## tab6
+
+ajax
+
 
 
 ## 推荐阅读

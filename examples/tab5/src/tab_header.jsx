@@ -21,7 +21,6 @@ var TabHeaderItem   = require('./tab_header_item.jsx');
 
 var TabHeader = React.createClass({
   render: function() {
-    var cls = "i5ting_tab_header";
     var arr = [];
     for(var i = 0; i< this.props.children.length; i++){
       var a = this.props.children[i].props;
