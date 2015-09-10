@@ -720,7 +720,7 @@ React.render(
 ```
 ### 精简写法
 
-
+tab4
 
 ```
 var TabHeaderItem   = require('./tab_header_item.jsx');
@@ -759,26 +759,39 @@ React.render(
 
 ```
 
+### tab5
 
 参考
 
 ```
-var Tabs = require('rc-tabs');
-var TabPane = Tabs.TabPane;
+var TabItem  = require('./tab_item.jsx');
+var Tab      = require('./tab.jsx');
 
 var callback = function(key){
 
 }
 
 React.render(
-  (
-    <Tabs defaultActiveKey="2" onChange={callback}>
-      <TabPane tab='tab 1' key="1">first</TabPane>
-      <TabPane tab='tab 2' key="2">second</TabPane>
-      <TabPane tab='tab 3' key="3">third</TabPane>
-    </Tabs>
-  ),
-  document.getElementById('t2'));
+  <Tab tab_changed={callback}>
+    <TabItem title="tab说明" current>
+      <p>tab说明</p>
+    </TabItem>
+    <TabItem title="'特性'">
+      特性
+    </TabItem>
+    <TabItem title="开源协议">
+      开源协议
+    </TabItem>
+    <TabItem title="源码">
+      源码
+    </TabItem>
+    <TabItem title="张婷作品">
+      <p>张婷作品</p>
+    </TabItem>
+  </Tab>
+  ,
+  document.getElementById('wrap1')
+);
 ```
 
 
