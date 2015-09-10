@@ -124,27 +124,26 @@
 	//   <a href="#">tab说明</a>
 	// </li>
 	var TabHeaderItem = React.createClass({displayName: "TabHeaderItem",
-	  componentDidMount: function() {
-	    var _this = this;
-	    $(this.getDOMNode()).click(function(){
-	      var container_li = $(this);
-	      
-	      var i = $(container_li).parent().find('li').index(this)
-	      // alert(i);
-	      $(container_li).addClass('current').siblings().removeClass('current');
-	      
-	      _this.changeContent(i);
-	    })
-	  },
 	  changeContent: function(i){
 	    var content = $(this.getDOMNode()).closest('.i5ting_tab_header').parent().parent().find('.i5ting_tab_content .i5ting_tab_content_item')
 	    var c = $(content).eq(i);
 	    $(c).addClass('current_content').siblings().removeClass('current_content');
 	  },
+	  
+	  handleClick: function(){
+	    var container_li = $(this.getDOMNode());
+	    
+	    var i = $(container_li).parent().find('li').index(container_li);
+	    // alert(i);
+	    $(container_li).addClass('current').siblings().removeClass('current');
+	    
+	    this.changeContent(i);
+	  },
+	  
 	  render: function() {
 	    var cls = this.props.current ? "current" : "";
 	    return (
-	      React.createElement("li", {className: cls}, 
+	      React.createElement("li", {className: cls, onClick: this.handleClick}, 
 	        React.createElement("a", {href: "#"}, this.props.title, " ")
 	      )
 	    );
@@ -217,12 +216,6 @@
 	//   </div>
 
 	var TabContentItem = React.createClass({displayName: "TabContentItem",
-	  componentDidMount: function() {
-	    $(this.getDOMNode()).click(function(){
-	      var container_li = $(this);
-	      $(container_li).addClass('current').siblings().removeClass('current');
-	    })
-	  },
 	  render: function() {
 	    var cls = this.props.current ? "current_content" : "";
 	    var clsName = "i5ting_tab_content_item " + cls;
