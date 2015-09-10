@@ -7,7 +7,7 @@ React.render(
     <TabItem title="tab说明" current>
       <p>tab说明</p>
     </TabItem>
-    <TabItem title="'特性'">
+    <TabItem title="'特性111'">
       特性
     </TabItem>
     <TabItem title="开源协议">

@@ -53,7 +53,7 @@
 	    React.createElement(TabItem, {title: "tab说明", current: true}, 
 	      React.createElement("p", null, "tab说明")
 	    ), 
-	    React.createElement(TabItem, {title: "'特性'"}, 
+	    React.createElement(TabItem, {title: "'特性111'"}, 
 	      "特性"
 	    ), 
 	    React.createElement(TabItem, {title: "开源协议"}, 
@@ -114,8 +114,10 @@
 	        React.createElement("ul", null, 
 	          React.createElement(TabHeader, null, 
 	            this.props.children
+	          ), 
+	          React.createElement(TabContent, null, 
+	            this.props.children
 	          )
-	          
 	        ) 
 
 	    );
@@ -253,9 +255,12 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */// <div class="i5ting_tab_content">
+	/** @jsx React.DOM */var TabContentItem   = __webpack_require__(4);
+	var TabContent       = __webpack_require__(5);
+
+	// <div class="i5ting_tab_content">
 	//   <div class="i5ting_tab_content_item current_content">
 	//
 	//   </div>
@@ -263,13 +268,31 @@
 	//
 	//   </div>
 	// </div>
+
 	var TabContent = React.createClass({displayName: "TabContent",
 	  render: function() {
-	      
-	  var cls = "i5ting_tab_content";
+	    var arr = [];
+	    for(var i = 0; i< this.props.children.length; i++){
+	      var a = this.props.children[i].props;
+	      if(a.current){
+	        arr.push(
+	          React.createElement(TabContentItem, {current: true}, 
+	            a.children
+	          )
+	        );
+	      }else{
+	        arr.push(
+	          React.createElement(TabContentItem, null, 
+	            a.children
+	          )
+	        );
+	      }
+	    }
+	    
+	    var cls = "i5ting_tab_content";
 	    return (
 	      React.createElement("div", {className: cls}, 
-	        this.props.children
+	        arr
 	      )
 	    );
 	  }
@@ -315,14 +338,15 @@
 	    
 	    // this.setState({tabContentDefault: default_index});
 	    
-	            
+	    var a= [];
+	    a.push(React.createElement(TabHeader, null));
+	    a.push(React.createElement(TabContent, null));
 	    var cls = "wrap1";
 	    
 	    return (
 	      //not class but className
-	      React.createElement(TabHeader, null)
-
-
+	      {a:a}
+	      
 	    );
 	  }
 	});

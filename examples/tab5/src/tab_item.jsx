@@ -32,14 +32,15 @@ var TabItem = React.createClass({
     
     // this.setState({tabContentDefault: default_index});
     
-            
+    var a= [];
+    a.push(<TabHeader/>);
+    a.push(<TabContent/>);
     var cls = "wrap1";
     
     return (
       //not class but className
-      <TabHeader/>
-
-
+      {a}
+      
     );
   }
 });

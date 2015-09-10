@@ -39,7 +39,9 @@ var Tab = React.createClass({
           <TabHeader>
             {this.props.children}
           </TabHeader>
-          
+          <TabContent>
+            {this.props.children}
+          </TabContent>
         </ul> 
 
     );
