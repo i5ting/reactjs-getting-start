@@ -24,23 +24,14 @@ var TabContentItem   = require('./tab_content_item.jsx');
 var TabContent       = require('./tab_content.jsx');
 
 var TabItem = React.createClass({
-  getInitialState: function() {
-    return {tabContentDefault: 0};
-  },
-  
   render: function() {
-    
-    // this.setState({tabContentDefault: default_index});
-    
     var a= [];
     a.push(<TabHeader/>);
     a.push(<TabContent/>);
-    var cls = "wrap1";
     
     return (
       //not class but className
       {a}
-      
     );
   }
 });

@@ -3,9 +3,6 @@
 //   <a href="#">tab说明</a>
 // </li>
 var TabHeaderItem = React.createClass({
-  getInitialState: function() {
-    return {value: 'Hello!'};
-  },
   componentDidMount: function() {
     var _this = this;
     $(this.getDOMNode()).click(function(){

@@ -18,23 +18,14 @@
  //   </ul>
  //  </div>
 
-var TabHeaderItem   = require('./tab_header_item.jsx');
 var TabHeader       = require('./tab_header.jsx');
-
-var TabContentItem   = require('./tab_content_item.jsx');
 var TabContent       = require('./tab_content.jsx');
 
-
 var Tab = React.createClass({
-  getInitialState: function() {
-    return {tabContentDefault: 0};
-  },
-  
   render: function() {
     var cls = this.props.current ? "current_content" : "";
     var clsName = "i5ting_tab_content_item " + cls;
     return (
-
         <ul> 
           <TabHeader>
             {this.props.children}
@@ -43,7 +34,6 @@ var Tab = React.createClass({
             {this.props.children}
           </TabContent>
         </ul> 
-
     );
   }
 });

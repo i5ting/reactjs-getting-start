@@ -44,8 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */
-	var Tab      = __webpack_require__(1);
+	/** @jsx React.DOM */var Tab      = __webpack_require__(1);
 	var TabItem  = __webpack_require__(6); 
 
 	React.render(
@@ -94,23 +93,14 @@
 	 //   </ul>
 	 //  </div>
 
-	var TabHeaderItem   = __webpack_require__(2);
 	var TabHeader       = __webpack_require__(3);
-
-	var TabContentItem   = __webpack_require__(4);
 	var TabContent       = __webpack_require__(5);
 
-
 	var Tab = React.createClass({displayName: "Tab",
-	  getInitialState: function() {
-	    return {tabContentDefault: 0};
-	  },
-	  
 	  render: function() {
 	    var cls = this.props.current ? "current_content" : "";
 	    var clsName = "i5ting_tab_content_item " + cls;
 	    return (
-
 	        React.createElement("ul", null, 
 	          React.createElement(TabHeader, null, 
 	            this.props.children
@@ -119,7 +109,6 @@
 	            this.props.children
 	          )
 	        ) 
-
 	    );
 	  }
 	});
@@ -135,9 +124,6 @@
 	//   <a href="#">tab说明</a>
 	// </li>
 	var TabHeaderItem = React.createClass({displayName: "TabHeaderItem",
-	  getInitialState: function() {
-	    return {value: 'Hello!'};
-	  },
 	  componentDidMount: function() {
 	    var _this = this;
 	    $(this.getDOMNode()).click(function(){
@@ -231,9 +217,6 @@
 	//   </div>
 
 	var TabContentItem = React.createClass({displayName: "TabContentItem",
-	  getInitialState: function() {
-	    return {value: 'Hello!'};
-	  },
 	  componentDidMount: function() {
 	    $(this.getDOMNode()).click(function(){
 	      var container_li = $(this);
@@ -330,23 +313,14 @@
 	var TabContent       = __webpack_require__(5);
 
 	var TabItem = React.createClass({displayName: "TabItem",
-	  getInitialState: function() {
-	    return {tabContentDefault: 0};
-	  },
-	  
 	  render: function() {
-	    
-	    // this.setState({tabContentDefault: default_index});
-	    
 	    var a= [];
 	    a.push(React.createElement(TabHeader, null));
 	    a.push(React.createElement(TabContent, null));
-	    var cls = "wrap1";
 	    
 	    return (
 	      //not class but className
 	      {a:a}
-	      
 	    );
 	  }
 	});

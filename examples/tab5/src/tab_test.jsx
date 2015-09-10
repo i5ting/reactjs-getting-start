@@ -1,4 +1,3 @@
-
 var Tab      = require('./tab.jsx');
 var TabItem  = require('./tab_item.jsx'); 
 

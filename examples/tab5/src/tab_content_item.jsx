@@ -3,9 +3,6 @@
 //   </div>
 
 var TabContentItem = React.createClass({
-  getInitialState: function() {
-    return {value: 'Hello!'};
-  },
   componentDidMount: function() {
     $(this.getDOMNode()).click(function(){
       var container_li = $(this);
