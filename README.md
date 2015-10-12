@@ -930,6 +930,20 @@ redux
 - [http://rackt.github.io/redux/docs/introduction/PriorArt.html](http://rackt.github.io/redux/docs/introduction/PriorArt.html)
 - [https://github.com/paulwittmann/redux-offline-docs](https://github.com/paulwittmann/redux-offline-docs)
 
+## 组件
+
+### react-draggable-tab
+
+可拖拽的tab，是个不错的项目
+
+https://github.com/georgeOsdDev/react-draggable-tab
+
+它其实最大的不一样是，引入了一个拖拽组件react-draggable，按照接口调用即可
+
+https://github.com/mzabriskie/react-draggable
+
+
+
 ## 最佳实践
 
 
