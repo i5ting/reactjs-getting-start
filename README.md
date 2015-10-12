@@ -930,7 +930,7 @@ redux
 - [http://rackt.github.io/redux/docs/introduction/PriorArt.html](http://rackt.github.io/redux/docs/introduction/PriorArt.html)
 - [https://github.com/paulwittmann/redux-offline-docs](https://github.com/paulwittmann/redux-offline-docs)
 
-## 组件
+## 推荐组件
 
 ### react-draggable-tab
 
