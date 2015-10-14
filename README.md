@@ -932,6 +932,10 @@ redux
 
 ## 推荐组件
 
+### redux-effects
+
+https://github.com/redux-effects/redux-effects
+
 ### react-draggable-tab
 
 可拖拽的tab，是个不错的项目
